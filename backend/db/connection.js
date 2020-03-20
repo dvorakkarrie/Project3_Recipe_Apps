@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 // set the uri for connecting to our local mongodb
-const mongoURI = 'mongodb://localhost/mern-lab'
+const mongoURI = 'mongodb://localhost/recipe_db'
 
 // connect to the database, with the imported mongoose instance
 mongoose
