@@ -30,9 +30,7 @@ router.put('/:id', (req, res) => {
 // DELETE A RECIPE
 router.delete('/:id', (req, res) => {
     Recipe.findOneAndDelete({_id: req.params.id})
-        .then(recipes => { 
-            res.json(recipes)
-        })
+    .then(recipes => res.json(recipes))
 })	
 
 module.exports = router
