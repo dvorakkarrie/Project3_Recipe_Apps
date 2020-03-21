@@ -10,17 +10,21 @@ router.get('/', (req, res) => {
 
 // GET USER BY ID	
 router.get('/:id', (req, res) => {
-
+    User.find({_id: req.params.id})
+    .then(users => res.json(users))
 })
 
 // CREATE A USER
 router.post('/', (req, res) => {
-
+    User.create(req.body)
+    .then(users => res.json(users))
 })
 
 // UPDATE A USER	
 router.put('/:id', (req, res) => {
-
+    User.findOneAndUpdate({ _id: req.params.id }, 
+        req.body, { new: true })
+    .then(users => res.json(users))  
 })
 
 // DELETE A USER
