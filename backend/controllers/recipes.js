@@ -14,6 +14,13 @@ router.get('/:id', (req, res) => {
     .then(recipes => res.json(recipes))
 })
 
+// GET RECIPE BY name	
+router.get('/:recipeName', (req, res) => {
+    
+    Recipe.find({recipeName: req.params.recipeName})
+    .then(recipes => res.json(recipes))
+})
+
 // CREATE A RECIPE
 router.post('/', (req, res) => {
     Recipe.create(req.body)

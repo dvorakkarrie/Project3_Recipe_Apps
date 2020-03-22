@@ -3,8 +3,7 @@ const mongoose = require('../db/connection');
 
 const UserSchema = new mongoose.Schema({
   email: String,
-  firstName: String,
-  lastName: String,
+  name: String,
   favorites: [
     {
       ref: "Recipe",
