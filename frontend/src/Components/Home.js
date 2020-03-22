@@ -27,63 +27,73 @@ const Home = (props) => {
     })
 
     return (
-        <div className='main'>
-            <div>
+        <div>
+            <header>
+                <h1>Recipe Cookbook</h1>
                 <Link to="/">
-                    <div onClick={props.handleAllAuthorSearch}>
-                        All Users
-                    </div>
+                    <p className="home-page-link" onClick={props.refreshPage}>
+                        Home
+                    </p>
                 </Link>
-                <Link to="/new-author">
-                    <div>
-                        Create new author
+            </header>
+            <section className='home-main-section'>
+                <section className="home-author-section">
+                    <Link to="/">
+                        <div className='home-divs' onClick={props.handleAllAuthorSearch}>
+                            All Authors
+                        </div>
+                    </Link>
+                    <Link to="/new-author">
+                        <div className='home-divs'>
+                            Create new author
+                        </div>
+                    </Link>
+                    <div className='home-divs'>
+                        <form onSubmit={props.handleSubmitAuthorSearch}>
+                            <label>Search by Email:</label>
+                            <input 
+                                type='text' className='user-search-box' 
+                                placeholder="@gmail.com"
+                                onChange={props.handleChangeAuthorSearch} 
+                                value={props.searchAuthorText}>
+                                    {props.value}
+                            </input>
+                            <button 
+                                type="button" onClick={props.handleSubmitAuthorSearch}>
+                                    Search
+                            </button>
+                            <input type="submit" style={{display: 'none'}}></input>
+                        </form>
+                        {allAuthors}
                     </div>
-                </Link>
-                <div>
-                    <form onSubmit={props.handleSubmitAuthorSearch}>
-                        <label>Search by Email:</label>
-                        <input 
-                            type='text' className='user-search-box' 
-                            placeholder="@gmail.com"
-                            onChange={props.handleChangeAuthorSearch} 
-                            value={props.searchText}>
-                                {props.value}
-                        </input>
-                        <button 
-                            type="button" onClick={props.handleSubmitAuthorSearch}>
+                </section>
+                <section className="home-recipe-section">
+                    <Link to="/">
+                        <div className='home-divs' onClick={props.handleAllRecipeSearch}>
+                            All Recipes
+                        </div>
+                    </Link>
+                    <Link to="/new-recipe">
+                        <div className='home-divs'>
+                            Create new recipe
+                        </div>
+                    </Link>
+                    <div className='home-divs'>
+                        <form onSubmit={props.handleSubmitRecipeSearch}>
+                            <label>Search by Recipe Name:</label>
+                            <input type='text' className='user-search-box' 
+                                onChange={props.handleChangeRecipeSearch} 
+                                value={props.searchRecipeText}>{props.value}
+                            </input>
+                            <button type="button" onClick={props.handleSubmitRecipeSearch}>
                                 Search
-                        </button>
-                         <input type="submit" style={{display: 'none'}}></input>
-                    </form>
-                    {allAuthors}
-                </div>
-            </div>
-            <div>
-                <Link to="/">
-                    <div onClick={props.handleAllRecipeSearch}>
-                        All Recipes
+                            </button>
+                            <input type="submit" style={{display: 'none'}}></input>
+                        </form>
+                        {allRecipes}
                     </div>
-                </Link>
-                <Link to="/new-recipe">
-                    <div>
-                        Create new recipe
-                    </div>
-                </Link>
-                <div>
-                    <form onSubmit={props.handleSubmitRecipeSearch}>
-                        <label>Search by Recipe Name:</label>
-                        <input type='text' className='user-search-box' 
-                            onChange={props.handleChangeRecipeSearch} 
-                            value={props.searchRecipeText}>{props.value}
-                        </input>
-                        <button type="button" onClick={props.handleSubmitRecipeSearch}>
-                            Search
-                        </button>
-                        <input type="submit" style={{display: 'none'}}></input>
-                    </form>
-                    {allRecipes}
-                </div>
-            </div>
+                </section>
+            </section>
         </div>    
     )
 }

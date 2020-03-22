@@ -6,13 +6,13 @@ const Author = props => {
         <div>
         <p>
             <Link to={`/authors/${props.author._id}`}>
-                {props.author.firstName} {props.author.lastName}
+                {props.author.name}
             </Link>
         </p>
-        <button id={props.author._id}
+        {/* <button id={props.author._id}
             onClick={props.handleDelete}>
                 Delete {props.author.firstName}
-        </button>
+        </button> */}
         </div>
     )
     

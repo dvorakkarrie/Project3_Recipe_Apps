@@ -33,22 +33,19 @@ class App extends Component {
     axios({
     method: 'GET',
     url: backendAuthorUrl
-  })
-  .then(authors => 
+  }).then(authors => 
     this.setState({authors: authors.data})
     ).catch(error => {
       console.log(error)
     })
   }
 
-
   getAuthorsEmailAxios() {
     axios({
     method: 'GET',
-    url: `${backendAuthorUrl}/byEmail/${this.state.searchText}`
+    url: `${backendAuthorUrl}/byEmail/${this.state.searchAuthorText}`
       
-  })
-  .then(authors =>
+  }).then(authors =>
     this.setState({authors: authors.data})
     ).catch(error => {
       console.log(error)
@@ -59,8 +56,7 @@ class App extends Component {
     axios({
     method: 'GET',
     url: backendRecipeUrl
-  })
-  .then(recipes => {
+  }).then(recipes => {
     console.log(recipes)
     this.setState({recipes: recipes.data})}
     ).catch(error => {
@@ -69,8 +65,9 @@ class App extends Component {
   }
 
   handleChangeAuthorSearch = event => {
+    console.log(event.target.value)
     this.setState({
-      searchText: event.target.value
+      searchAuthorText: event.target.value
     })
   }
 
@@ -95,10 +92,9 @@ class App extends Component {
   }
 
   render() {
-    console.log(this)
+    console.log(this.state.searchAuthorText)
     return (
       <div className="App">
-        <h1>Recipe Cookbook</h1>
         <Switch>
           <Route exact path="/" render={routerProps => (
             <Home 

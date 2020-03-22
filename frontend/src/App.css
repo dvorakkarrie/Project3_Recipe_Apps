@@ -1,24 +1,75 @@
+/* This formats the buttons located on the home page and found in the Home component. */
+button {
+  background-color: rgb(33, 28, 47);
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  height: 25px;
+  margin: 7%;
+  width: 25%;
+}
+
+/* This format the header of the web page and used in the Home component. */
+header {
+  padding: 1%;
+}
+
+/* This formats the body of the web page and used in the App component. */
 .App {
+  background-color: rgba(246, 220, 198, 0.15);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  margin: auto;
   text-align: center;
 }
 
-.App-header {
-  min-height: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: navy;
+/* This formats the Home link in the header section and found in the Home component. */
+.home-page-link {
+  margin: 0 3%;
+  text-align: left;
 }
 
-.App-link {
-  color: #61dafb;
+/* This formats the main section of the home page and found in the Home component. */
+.home-main-section {
+  border-top: 2px rgba(21, 21, 21, 0.5) solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 2%;
+}
+
+/* This formats the author section of the home page and found in the Home component. */
+.home-author-section {
+  border-right: 2px rgba(21, 21, 21, 0.5) solid;
+  padding: 5%;
+  text-align: left;
+}
+
+/* This formats the recipe section of the home page and found in the Home component. */
+.home-recipe-section {
+  padding: 3%;
+  text-align: left;
+}
+
+/* This formats all the divs on the home page and found in the Home component. */
+.home-divs {
+  padding: 3%;
+}
+
+/* This formats the search text boxes located on the home page and found in the Home component. */
+.user-search-box {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  height: 25px;
+  margin: 5px 0 30px;
+  position: relative;
+  transition: 0.3 all;
+  width: 100%;
 }
 
 li {
   list-style: none;
 }
-
 
 @keyframes App-logo-spin {
   from {

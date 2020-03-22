@@ -5,14 +5,14 @@ const Recipe = props => {
     return (
         <div>
         <p>
-            <Link to={`/recipes/${props.recipe._id}`}>
-                {props.recipe}
+            <Link to={`/authors/${props.recipe._id}`}>
+                {props.recipe.recipeName}
             </Link>
         </p>
-        <button id={props.recipe._id}
+        {/* <button id={props.recipe._id}
             onClick={props.handleDelete}>
                 Delete {props.author}
-        </button>
+        </button> */}
         </div>
     )
     
