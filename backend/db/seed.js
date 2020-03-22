@@ -12,8 +12,7 @@ User.deleteMany({}).then(() => {
             console.log('deleted all ingredients')
 
             User.create({ 
-                firstName: "Kiran",
-                lastName: "Pendurthi",
+                name: "Kiran Pendurthi",
                 email: "pendurthikirank@johndeere.com" 
             }).then(kiran => {
                 Recipe.create({
@@ -38,8 +37,7 @@ User.deleteMany({}).then(() => {
 
 
             User.create({ 
-                "firstName": "Karrie",
-                "lastName": "Dvorak", 
+                "name": "Karrie Dvorak",
                 "email": "dvorakkarriel@johndeere.com" })
             .then(karrie => {
                 Recipe.create({

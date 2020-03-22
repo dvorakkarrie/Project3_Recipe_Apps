@@ -9,8 +9,14 @@ router.get('/', (req, res) => {
   })	
 
 // GET USER BY ID	
-router.get('/:id', (req, res) => {
+router.get('/byId/:id', (req, res) => {
     User.find({_id: req.params.id})
+    .then(users => res.json(users))
+})
+
+// GET USER BY EMAIL	
+router.get('/byEmail/:email/', (req, res) => {
+    User.find({email: req.params.email})
     .then(users => res.json(users))
 })
 
