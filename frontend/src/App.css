@@ -4,38 +4,52 @@ button {
   border-radius: 10px;
   color: white;
   font-size: 15px;
+  font-weight: 600;
   height: 25px;
   margin: 5%;
   width: 25%;
 }
 
 /* This format the header of the web page and used in the Home component. */
-header {
+header {  
+
   border-bottom: 2px rgba(21, 21, 21, 0.5) solid;
+  color: black;
+  font-size: 20px;
   padding: 1%;
 }
 
 /* This formats the body of the web page and used in the App component. */
 .App {
+  background-image: url("https://www.edamam.com/web-img/014/0142fbc6cc6f51a03d504aff71df07eb.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
   background-color: rgba(246, 220, 198, 0.15);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 15px;
   margin: auto;
+  opacity: 100%;
   text-align: center;
 }
 
 /* This formats the Home link in the header section and found in the Home component. */
 .home-page-link {
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
   margin: 0 3%;
   text-align: left;
 }
 
 /* This formats the main section of the home page and found in the Home component. */
 .home-main-section {
+  align-items: auto;
   display: flex;
+  height: 700px;
   flex-direction: row;
+  font-size: 15px;
+  font-weight: 600;
   justify-content: space-evenly;
-  margin: 2%;
 }
 
 /* This formats the author section of the home page and found in the Home component. */
@@ -53,7 +67,10 @@ header {
 
 /* This formats all the divs on the home page and found in the Home component. */
 .home-divs {
+  background-color: rgb(194, 202, 215);
+  border-radius: 2px;
   padding: 5%;
+  width: 80%;
 }
 
 /* This formats the search text boxes located on the home page and found in the Home component. */
@@ -71,6 +88,11 @@ header {
 .search-box:hover {
   background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.search-results {
+  
+  margin: 20px 0;
 }
 
 @keyframes App-logo-spin {

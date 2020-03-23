@@ -2,6 +2,17 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const AuthorDetails = props => {
+    console.log(props.match.params.id)
+
+    let authorsDetail = props.authors.find(
+        author => author._id === props.match.params.id
+    )
+    console.log(authorsDetail.recipes)
+    authorsDetail.recipes.forEach(recipe => {
+        console.log(recipe)
+    })
+    
+
     return (
         <div>
             <header>
@@ -15,7 +26,9 @@ const AuthorDetails = props => {
                 </Link>
             </header>
             <section>
-                Author page
+                <h2>Author: {authorsDetail.name}</h2>
+                <p>{authorsDetail.recipes}</p>
+
             </section>        
         </div>
     )

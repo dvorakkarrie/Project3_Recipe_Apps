@@ -4,7 +4,6 @@ import Author from './Author'
 import Recipe from './Recipe'
 
 const Home = (props) => {
-    console.log(props)
     
     let allAuthors = props.authors.map(author => {
         return (
@@ -20,6 +19,7 @@ const Home = (props) => {
             <Recipe 
                 key={recipe._id}
                 recipe = {recipe}
+                selectedSearch = "recipe"
             />
         )
     })
@@ -64,8 +64,11 @@ const Home = (props) => {
                             </button>
                             <input type="submit" style={{display: 'none'}}></input>
                         </form>
-                        {allAuthors}
+                        <div className="search-results">
+                            {allAuthors}
+                        </div>
                     </div>
+
                 </section>
                 <section className="home-recipe-section">
                     <Link to="/">
@@ -91,7 +94,9 @@ const Home = (props) => {
                             </button>
                             <input type="submit" style={{display: 'none'}}></input>
                         </form>
-                        {allRecipes}
+                        <div className="search-results">
+                            {allRecipes}
+                        </div>
                     </div>
                 </section>
             </section>

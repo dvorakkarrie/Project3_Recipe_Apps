@@ -29,7 +29,8 @@ class App extends Component {
         // newIngredientQuantity: 0,
         // newIngredientMeasurement: '',
         searchAuthorText: '',
-        searchRecipeText: ''
+        searchRecipeText: '',
+        selectedSearch: "authors"
     }
   }
 
@@ -54,6 +55,17 @@ class App extends Component {
       console.log(error)
     })
   }
+
+  // getAuthorbyIdAxios() {
+  //   axios({
+  //   method: 'GET',
+  //   url: `${backendAuthorUrl}/byId/${this.state.searchAuthorText}`
+  // }).then(authors =>
+  //   this.setState({authors: authors.data})
+  //   ).catch(error => {
+  //     console.log(error)
+  //   })
+  // }
 
   getRecipesAxios() {
     axios({
@@ -91,13 +103,14 @@ class App extends Component {
   }
 
   handleChangeAuthorSearch = event => {
-    console.log(event.target.value)
+    console.log(event)
     this.setState({
       searchAuthorText: event.target.value
     })
   }
 
   handleAllAuthorSearch = event => {
+    console.log(event.target)
     event.preventDefault()
     this.getAuthorsAxios()
   }
@@ -144,6 +157,7 @@ class App extends Component {
               {...routerProps}
               authors={this.state.authors}
               recipes={this.state.recipes}
+              selectedSearch={this.state.selectedSearch}
 
               searchAuthorText={this.state.searchAuthorText}
               handleAllAuthorSearch={this.handleAllAuthorSearch}
@@ -161,6 +175,7 @@ class App extends Component {
             <AuthorDetails
             {...routerProps}
             authors={this.state.authors}
+            authorDetails={this.props.match.params.id}
           /> )} 
           />
           <Route path="/new-author" render={routerProps => (
@@ -171,9 +186,10 @@ class App extends Component {
           />
           <Route path="/recipes/:id" render={routerProps => (
             <RecipeDetails
-            {...routerProps}
-            recipes={this.state.recipes}
-            handleRecipeDelete={this.deleteRecipeAxios}
+              {...routerProps}
+              recipes={this.state.recipes}
+              recipeDetails={this.props.match.params.id}
+              handleRecipeDelete={this.deleteRecipeAxios}
           /> )}
           />
           <Route path="/new-recipe" render={routerProps => (
