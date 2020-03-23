@@ -15,6 +15,7 @@ router.get('/:id', (req, res) => {
     .then(users => res.json(users))
 })
 */
+
 // GET USER BY ID	
 router.get('/byId/:id', (req, res) => {
     User.find({_id: req.params.id})
@@ -24,6 +25,12 @@ router.get('/byId/:id', (req, res) => {
 // GET USER BY EMAIL	
 router.get('/byEmail/:email/', (req, res) => {
     User.find({email: req.params.email})
+    .then(users => res.json(users))
+})
+
+// GET USER BY name	
+router.get('/byName/:name/', (req, res) => {
+    User.find({name: req.params.name})
     .then(users => res.json(users))
 })
 

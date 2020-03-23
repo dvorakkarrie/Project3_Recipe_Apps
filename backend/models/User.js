@@ -1,10 +1,9 @@
-// models/User.js
 const mongoose = require('../db/connection');
 
 const UserSchema = new mongoose.Schema({
   email: String,
   name: String,
-  favorites: [
+  recipes: [
     {
       ref: "Recipe",
       type: mongoose.Schema.Types.ObjectId

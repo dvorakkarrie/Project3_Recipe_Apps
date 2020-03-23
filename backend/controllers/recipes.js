@@ -15,8 +15,7 @@ router.get('/:id', (req, res) => {
 })
 
 // GET RECIPE BY name	
-router.get('/:recipeName', (req, res) => {
-    
+router.get('/byRecipeName/:recipeName', (req, res) => {
     Recipe.find({recipeName: req.params.recipeName})
     .then(recipes => res.json(recipes))
 })
