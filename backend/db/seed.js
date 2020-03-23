@@ -75,6 +75,5 @@ User.deleteMany({}).then(() => {
                     console.log('KP added recipe') })
                 })
             })
-
     })
 })

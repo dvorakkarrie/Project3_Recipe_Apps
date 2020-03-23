@@ -1,78 +1,211 @@
-import React, { Component } from 'react';                       // importing component
-import {Link,
-  Redirect, 
-  Route, 
-  Switch
-} from 'react-router-dom';   // importing router 
-import axios from 'axios';                                  // importing axios
+import React, {Component} from 'react'; // importing component
+import {Route, Redirect, Switch, withRouter} from 'react-router-dom'; // importing router 
+import axios from 'axios'; // importing axios
+import './App.css'; // importing css file
 
-import './App.css';                                             // importing css file
+import Home from './Components/Home'; // importing Home component
+import AuthorDetails from './Components/AuthorDetails'; // importing AuthorDetails component
+import NewAuthor from './Components/NewAuthor'; //importing NewAuthor component
+import RecipeDetails from './Components/RecipeDetails'; // importing RecipeDetails component
+import NewRecipe from './Components/NewRecipe'; // importing NewRecipe component
 
-import Home from './Components/Home';                        // importing Home component
-// import User from './Components/User';                        // importing User component
-// import NewRecipe from './Components/NewRecipe';              // importing NewRecipe component
-// import EditRecipe from './Components/EditRecipe';            // importing EditRecipe component
-
-const backendUsersUrl = "http://localhost:8080/api/users/";          // defined variable for the api/users backend url
+const backendAuthorUrl = "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
+const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/users backend url
 
 class App extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      userFirstName: "",
-      userLastName: "",
-      recipes: [],
+      this.state = {
+        authors: [],
+        // newAuthorFirstName: "",
+        // newAuthorLastName: "",
+        // newAuthorEmail: '', 
+        recipes: [],
+        // newRecipeName: "",
+        // newRecipeUrl: "",
+        // newRecipeImageUrl: "",
+        // ingredients: [],
+        // newIngredientName: "",
+        // newIngredientQuantity: 0,
+        // newIngredientMeasurement: '',
+        searchAuthorText: '',
+        searchRecipeText: '',
+        selectedSearch: "authors"
     }
   }
 
-  componentDidMount() {
-    this.getUsersAxios()
-  }
-
-  getUsersAxios() {
+  getAuthorsAxios() {
     axios({
-      method: 'GET',
-      url: backendUsersUrl
+    method: 'GET',
+    url: backendAuthorUrl
+  }).then(authors => 
+    this.setState({authors: authors.data})
+    ).catch(error => {
+      console.log(error)
     })
-    .then(users => 
-      this.setState({users: users.data}))
   }
 
-  handleSubmit = event => {
+  getAuthorEmailAxios() {
+    axios({
+    method: 'GET',
+    url: `${backendAuthorUrl}/byEmail/${this.state.searchAuthorText}`
+  }).then(authors =>
+    this.setState({authors: authors.data})
+    ).catch(error => {
+      console.log(error)
+    })
+  }
+
+  // getAuthorbyIdAxios() {
+  //   axios({
+  //   method: 'GET',
+  //   url: `${backendAuthorUrl}/byId/${this.state.searchAuthorText}`
+  // }).then(authors =>
+  //   this.setState({authors: authors.data})
+  //   ).catch(error => {
+  //     console.log(error)
+  //   })
+  // }
+
+  getRecipesAxios() {
+    axios({
+    method: 'GET',
+    url: backendRecipeUrl
+  }).then(recipes => {
+    console.log(recipes)
+    this.setState({recipes: recipes.data})}
+    ).catch(error => {
+      console.log(error)
+    })
+  }
+
+  getRecipeNameAxios() {
+    axios({
+    method: 'GET',
+    url: `${backendRecipeUrl}/byRecipeName/${this.state.searchRecipeText}`
+  }).then(recipes => {
+    console.log(recipes)
+    this.setState({recipes: recipes.data})}
+    ).catch(error => {
+      console.log(error)
+    })
+  }
+
+  deleteRecipeAxios = event => {
     event.preventDefault()
-    this.createUserAxios()
+    axios({
+      method: "DELETE",
+      url: `${backendRecipeUrl}${event.target.id}`
+    })
+    .then(deletedRecipe => {
+      this.getRecipesAxios();
+    });
   }
 
-  handleChange = event => {
+  handleChangeAuthorSearch = event => {
+    console.log(event)
+    this.setState({
+      searchAuthorText: event.target.value
+    })
+  }
+
+  handleAllAuthorSearch = event => {
+    console.log(event.target)
+    event.preventDefault()
+    this.getAuthorsAxios()
+  }
+
+  handleSubmitAuthorSearch = event => {
+    event.preventDefault()
+    this.getAuthorEmailAxios()
+    this.setState({
+      searchAuthorText: ''
+    })
+  }
+
+  handleChangeRecipeSearch = event => {
     console.log(event.target.value)
     this.setState({
-      [event.target.name]: event.target.value
+      searchRecipeText: event.target.value
     })
+  }
+
+  handleAllRecipeSearch = event => {
+    event.preventDefault()
+    this.getRecipesAxios()
+  }
+
+  handleSubmitRecipeSearch = event => {
+    event.preventDefault()
+    this.getRecipeNameAxios()
+    this.setState({
+      searchRecipeText: ''
+    })
+  }
+
+  refreshPage = () => {
+    window.location.reload(false)
   }
 
   render() {
+    console.log(this.state.searchAuthorText)
     return (
       <div className="App">
-        <h1>Recipe Notebook</h1>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/users">User's Recipes</Link>
-          <Link to="/new-recipe">Create New Recipe Form</Link>
-          <Link to="/edit-recipe">Edit Recipe Form</Link>
-        </nav>
         <Switch>
-          <Route exact path='/' render={() => 
+          <Route exact path="/" render={routerProps => (
             <Home 
-              handleChange={this.handleChange} 
-              handleSubmit={this.handleSubmit}
+              {...routerProps}
+              authors={this.state.authors}
+              recipes={this.state.recipes}
+              selectedSearch={this.state.selectedSearch}
+
+              searchAuthorText={this.state.searchAuthorText}
+              handleAllAuthorSearch={this.handleAllAuthorSearch}
+              handleChangeAuthorSearch={this.handleChangeAuthorSearch} 
+              handleSubmitAuthorSearch={this.handleSubmitAuthorSearch}
+
+              searchRecipeText={this.state.searchRecipeText}
+              handleAllRecipeSearch={this.handleAllRecipeSearch}
+              handleChangeRecipeSearch={this.handleChangeRecipeSearch} 
+              handleSubmitRecipeSearch={this.handleSubmitRecipeSearch}
+              refreshPage={this.refreshPage}
+            /> )} 
+          />
+          <Route path="/authors/:id" render={routerProps => (
+            <AuthorDetails
+            {...routerProps}
+            authors={this.state.authors}
+            authorDetails={this.props.match.params.id}
+          /> )} 
+          />
+          <Route path="/new-author" render={routerProps => (
+            <NewAuthor
+            {...routerProps}
+            authors={this.state.authors}
+            /> )}
+          />
+          <Route path="/recipes/:id" render={routerProps => (
+            <RecipeDetails
+              {...routerProps}
+              recipes={this.state.recipes}
+              recipeDetails={this.props.match.params.id}
+              handleRecipeDelete={this.deleteRecipeAxios}
+          /> )}
+          />
+          <Route path="/new-recipe" render={routerProps => (
+            <NewRecipe
+            {...routerProps}
+            recipes={this.state.recipes}
+            /> )}
+          />
+          <Route path="/*" render={() => 
+            <Redirect to="/" 
             /> } 
           />
-          <Route path='*' render={() => <Redirect to='/' />} /> */}
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
