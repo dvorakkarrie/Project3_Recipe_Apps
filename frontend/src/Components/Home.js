@@ -11,8 +11,6 @@ const Home = (props) => {
             <Author 
                 key={author._id}
                 author = {author}
-                // handleDelete={props.handleDelete}
-                // toggleDisplay={this.toggleDisplay}
             />
         )
     })
@@ -31,8 +29,10 @@ const Home = (props) => {
             <header>
                 <h1>Recipe Cookbook</h1>
                 <Link to="/">
-                    <p className="home-page-link" onClick={props.refreshPage}>
-                        Home
+                    <p 
+                        className="home-page-link" 
+                        onClick={props.refreshPage}>
+                            Home
                     </p>
                 </Link>
             </header>
@@ -50,7 +50,7 @@ const Home = (props) => {
                     </Link>
                     <div className='home-divs'>
                         <form onSubmit={props.handleSubmitAuthorSearch}>
-                            <label>Search by Email:</label>
+                            <label>Search by an email address:</label>
                             <input 
                                 type='text' className='search-box' 
                                 placeholder="@gmail.com"
@@ -80,7 +80,7 @@ const Home = (props) => {
                     </Link>
                     <div className='home-divs'>
                         <form onSubmit={props.handleSubmitRecipeSearch}>
-                            <label>Search by Recipe Name:</label>
+                            <label>Search by the name of a recipe:</label>
                             <input type='text' className='search-box' 
                                 placeholder="i.e. Beef Tacos, Chicken Marsala"
                                 onChange={props.handleChangeRecipeSearch} 

@@ -1,16 +1,17 @@
 /* This formats the buttons located on the home page and found in the Home component. */
 button {
-  background-color: rgb(33, 28, 47);
+  background-color: rgb(152, 0, 0);
   border-radius: 10px;
   color: white;
   font-size: 15px;
   height: 25px;
-  margin: 7%;
+  margin: 5%;
   width: 25%;
 }
 
 /* This format the header of the web page and used in the Home component. */
 header {
+  border-bottom: 2px rgba(21, 21, 21, 0.5) solid;
   padding: 1%;
 }
 
@@ -31,7 +32,6 @@ header {
 
 /* This formats the main section of the home page and found in the Home component. */
 .home-main-section {
-  border-top: 2px rgba(21, 21, 21, 0.5) solid;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -47,13 +47,13 @@ header {
 
 /* This formats the recipe section of the home page and found in the Home component. */
 .home-recipe-section {
-  padding: 3%;
+  padding: 5%;
   text-align: left;
 }
 
 /* This formats all the divs on the home page and found in the Home component. */
 .home-divs {
-  padding: 3%;
+  padding: 5%;
 }
 
 /* This formats the search text boxes located on the home page and found in the Home component. */
@@ -67,7 +67,7 @@ header {
   width: 80%;
 }
 
-/* This changes the format of the calories and search text boxes whent he user hovers. */
+/* This formats the search text box when hovered and found in the Home component. */
 .search-box:hover {
   background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
@@ -81,6 +81,7 @@ header {
     transform: rotate(360deg);
   }
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

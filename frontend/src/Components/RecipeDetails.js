@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const NewRecipe = (props) => {
+const RecipeDetails = props => {
     return (
         <div>
             <header>
@@ -14,10 +14,16 @@ const NewRecipe = (props) => {
                     </p>
                 </Link>
             </header>
-            <section>New Recipe page
-            </section>        
+            <section>Recipe page
+                <button 
+                    className="delete-button" 
+                    id={props.recipes._id} 
+                    onClick={props.handleRecipeDelete}>
+                        Delete
+                    </button>
+            </section>            
         </div>
     )
 }
 
-export default NewRecipe;
+export default RecipeDetails

@@ -4,6 +4,10 @@ import axios from 'axios'; // importing axios
 import './App.css'; // importing css file
 
 import Home from './Components/Home'; // importing Home component
+import AuthorDetails from './Components/AuthorDetails'; // importing AuthorDetails component
+import NewAuthor from './Components/NewAuthor'; //importing NewAuthor component
+import RecipeDetails from './Components/RecipeDetails'; // importing RecipeDetails component
+import NewRecipe from './Components/NewRecipe'; // importing NewRecipe component
 
 const backendAuthorUrl = "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
 const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/users backend url
@@ -75,6 +79,17 @@ class App extends Component {
     })
   }
 
+  deleteRecipeAxios = event => {
+    event.preventDefault()
+    axios({
+      method: "DELETE",
+      url: `${backendRecipeUrl}${event.target.id}`
+    })
+    .then(deletedRecipe => {
+      this.getRecipesAxios();
+    });
+  }
+
   handleChangeAuthorSearch = event => {
     console.log(event.target.value)
     this.setState({
@@ -129,16 +144,43 @@ class App extends Component {
               {...routerProps}
               authors={this.state.authors}
               recipes={this.state.recipes}
+
               searchAuthorText={this.state.searchAuthorText}
               handleAllAuthorSearch={this.handleAllAuthorSearch}
               handleChangeAuthorSearch={this.handleChangeAuthorSearch} 
               handleSubmitAuthorSearch={this.handleSubmitAuthorSearch}
+
               searchRecipeText={this.state.searchRecipeText}
               handleAllRecipeSearch={this.handleAllRecipeSearch}
               handleChangeRecipeSearch={this.handleChangeRecipeSearch} 
               handleSubmitRecipeSearch={this.handleSubmitRecipeSearch}
               refreshPage={this.refreshPage}
             /> )} 
+          />
+          <Route path="/authors/:id" render={routerProps => (
+            <AuthorDetails
+            {...routerProps}
+            authors={this.state.authors}
+          /> )} 
+          />
+          <Route path="/new-author" render={routerProps => (
+            <NewAuthor
+            {...routerProps}
+            authors={this.state.authors}
+            /> )}
+          />
+          <Route path="/recipes/:id" render={routerProps => (
+            <RecipeDetails
+            {...routerProps}
+            recipes={this.state.recipes}
+            handleRecipeDelete={this.deleteRecipeAxios}
+          /> )}
+          />
+          <Route path="/new-recipe" render={routerProps => (
+            <NewRecipe
+            {...routerProps}
+            recipes={this.state.recipes}
+            /> )}
           />
           <Route path="/*" render={() => 
             <Redirect to="/" 
