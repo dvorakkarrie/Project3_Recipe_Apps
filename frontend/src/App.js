@@ -40,11 +40,10 @@ class App extends Component {
     })
   }
 
-  getAuthorsEmailAxios() {
+  getAuthorEmailAxios() {
     axios({
     method: 'GET',
     url: `${backendAuthorUrl}/byEmail/${this.state.searchAuthorText}`
-      
   }).then(authors =>
     this.setState({authors: authors.data})
     ).catch(error => {
@@ -56,6 +55,18 @@ class App extends Component {
     axios({
     method: 'GET',
     url: backendRecipeUrl
+  }).then(recipes => {
+    console.log(recipes)
+    this.setState({recipes: recipes.data})}
+    ).catch(error => {
+      console.log(error)
+    })
+  }
+
+  getRecipeNameAxios() {
+    axios({
+    method: 'GET',
+    url: `${backendRecipeUrl}/byRecipeName/${this.state.searchRecipeText}`
   }).then(recipes => {
     console.log(recipes)
     this.setState({recipes: recipes.data})}
@@ -76,15 +87,32 @@ class App extends Component {
     this.getAuthorsAxios()
   }
 
+  handleSubmitAuthorSearch = event => {
+    event.preventDefault()
+    this.getAuthorEmailAxios()
+    this.setState({
+      searchAuthorText: ''
+    })
+  }
+
+  handleChangeRecipeSearch = event => {
+    console.log(event.target.value)
+    this.setState({
+      searchRecipeText: event.target.value
+    })
+  }
+
   handleAllRecipeSearch = event => {
-    console.log("recipes running")
     event.preventDefault()
     this.getRecipesAxios()
   }
 
-  handleSubmitAuthorSearch = event => {
+  handleSubmitRecipeSearch = event => {
     event.preventDefault()
-    this.getAuthorsEmailAxios()
+    this.getRecipeNameAxios()
+    this.setState({
+      searchRecipeText: ''
+    })
   }
 
   refreshPage = () => {
@@ -102,11 +130,13 @@ class App extends Component {
               authors={this.state.authors}
               recipes={this.state.recipes}
               searchAuthorText={this.state.searchAuthorText}
-              searchRecipeText={this.state.searchRecipeText}
               handleAllAuthorSearch={this.handleAllAuthorSearch}
-              handleAllRecipeSearch={this.handleAllRecipeSearch}
               handleChangeAuthorSearch={this.handleChangeAuthorSearch} 
               handleSubmitAuthorSearch={this.handleSubmitAuthorSearch}
+              searchRecipeText={this.state.searchRecipeText}
+              handleAllRecipeSearch={this.handleAllRecipeSearch}
+              handleChangeRecipeSearch={this.handleChangeRecipeSearch} 
+              handleSubmitRecipeSearch={this.handleSubmitRecipeSearch}
               refreshPage={this.refreshPage}
             /> )} 
           />

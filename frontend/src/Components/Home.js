@@ -52,7 +52,7 @@ const Home = (props) => {
                         <form onSubmit={props.handleSubmitAuthorSearch}>
                             <label>Search by Email:</label>
                             <input 
-                                type='text' className='user-search-box' 
+                                type='text' className='search-box' 
                                 placeholder="@gmail.com"
                                 onChange={props.handleChangeAuthorSearch} 
                                 value={props.searchAuthorText}>
@@ -81,7 +81,8 @@ const Home = (props) => {
                     <div className='home-divs'>
                         <form onSubmit={props.handleSubmitRecipeSearch}>
                             <label>Search by Recipe Name:</label>
-                            <input type='text' className='user-search-box' 
+                            <input type='text' className='search-box' 
+                                placeholder="i.e. Beef Tacos, Chicken Marsala"
                                 onChange={props.handleChangeRecipeSearch} 
                                 value={props.searchRecipeText}>{props.value}
                             </input>
