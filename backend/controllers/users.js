@@ -5,16 +5,10 @@ const User = require('../models/User')
 
 // GET ALL USERS
 router.get('/', (req, res) => {
-    User.find({}).then(users => res.json(users))
+    User.find().then(users => res.json(users))
   })	
 
-// GET USER BY ID	
-/*
-router.get('/:id', (req, res) => {
-    User.find({_id: req.params.id})
-    .then(users => res.json(users))
-})
-*/
+
 
 // GET USER BY ID	
 router.get('/byId/:id', (req, res) => {
@@ -34,6 +28,12 @@ router.get('/byName/:name/', (req, res) => {
     .then(users => res.json(users))
 })
 
+
+// GET USER BY EMAIL	
+router.get('/byEmail/:email/', (req, res) => {
+    User.find({email: req.params.email})
+    .then(users => res.json(users))
+})
 
 // CREATE A USER
 router.post('/', (req, res) => {

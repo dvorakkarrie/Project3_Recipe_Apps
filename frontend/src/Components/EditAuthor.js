@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EditRecipe = (props) => {
+const EditAuthor = (props) => {
 
     return (
         <div>
@@ -8,4 +8,4 @@ const EditRecipe = (props) => {
     )
 }
 
-export default EditRecipe;
+export default EditAuthor;

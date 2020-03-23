@@ -9,12 +9,12 @@ router.get('/', (req, res) => {
   })	
 
 // GET RECIPE BY ID	
-router.get('/:id', (req, res) => {
+router.get('/byId/:id', (req, res) => {
     Recipe.find({_id: req.params.id})
     .then(recipes => res.json(recipes))
 })
 
-// GET RECIPE BY name	
+// GET RECIPE BY RECIPE NAME	
 router.get('/byRecipeName/:recipeName', (req, res) => {
     Recipe.find({recipeName: req.params.recipeName})
     .then(recipes => res.json(recipes))

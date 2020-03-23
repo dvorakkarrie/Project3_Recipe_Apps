@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const NewRecipe = (props) => {
+const NewAuthor = props => {
     return (
         <div>
             <header>
@@ -14,10 +14,10 @@ const NewRecipe = (props) => {
                     </p>
                 </Link>
             </header>
-            <section>New Recipe page
+            <section>New Author page
             </section>        
         </div>
     )
 }
 
-export default NewRecipe;
+export default NewAuthor

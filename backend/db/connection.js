@@ -1,19 +1,18 @@
-// we're importing mongoose from node_modules
+// Importing mongoose from node_modules
 const mongoose = require('mongoose')
 
-// set the uri for connecting to our local mongodb
+// Set the uri for connecting to our local mongodb
 const mongoURI = 'mongodb://localhost/recipe_db'
 
-// connect to the database, with the imported mongoose instance
+// connect to database with imported mongoose instance
 mongoose
-  .connect(mongoURI, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
-    useFindAndModify: false 
-  })
-  .then(instance => console.log(`Connected to db: ${instance.connections[0].name}`))
-  .catch(error => console.log('Connection failed!', error))
+    .connect(mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+    })
+    .then(instance => console.log('Connected to db: ${instance.connections[0].name}'))
+    .catch(err => console.log('Connection Failed! ', err))
 
-// now, our mongoose instance has a configured connection to our local db, in addition
-// to its model configuration
+// Mongoose instance has configured connection to local db including its model configuration
 module.exports = mongoose
