@@ -110,7 +110,6 @@ class App extends Component {
   }
 
   handleAllAuthorSearch = event => {
-    console.log(event.target)
     event.preventDefault()
     this.getAuthorsAxios()
   }
@@ -148,7 +147,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.searchAuthorText)
     return (
       <div className="App">
         <Switch>
