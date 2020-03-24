@@ -11,6 +11,7 @@ const Home = (props) => {
                 key={author._id}
                 author = {author}
                 selectedSearch="author"
+                handleAllRecipeSearch={props.handleAllRecipeSearch}
             />
         )
     })

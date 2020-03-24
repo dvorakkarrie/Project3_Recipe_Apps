@@ -282,12 +282,7 @@ class App extends Component {
             <AuthorDetails
             {...routerProps}
             authors={this.state.authors}
-<<<<<<< HEAD
-            newAuthorEmail={this.state.newAuthorEmail}
-            newAuthorName={this.state.newAuthorName}
-=======
             recipes={this.state.recipes}
->>>>>>> af0c2d7f2d5bb202cb04b6d8c2648e97d51a231f
             authorDetails={this.props.match.params.id}
             searchRecipeText={this.state.searchRecipeText}
             handleRecipeIdSearch={this.handleRecipeIdSearch}

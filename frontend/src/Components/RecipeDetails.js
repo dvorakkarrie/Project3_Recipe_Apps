@@ -24,10 +24,10 @@ const RecipeDetails = props => {
                     </p>
                 </Link>
             </header>
-            <section>Recipe page
+            <section>
                 <h2>{recipesDetail.recipeName}</h2>
                 <img src={recipesDetail.image} alt="Smiley face" height="200" width="200"></img>
-                <h2><a href={recipesDetail.url}>Recipe External Link</a></h2>
+                <h2><a target='_blank' href={recipesDetail.url} rel="noopener noreferrer">Recipe External Link</a></h2>
                 <h2>List of Ingredients</h2>
                 <li>{ingredientsDetail.quantity}-{ingredientsDetail.measurement}-{ingredientsDetail.description}</li>
                 <button 
