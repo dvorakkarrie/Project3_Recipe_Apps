@@ -8,6 +8,7 @@ const AuthorDetails = props => {
     let authorsDetail = props.authors.find(
         author => author._id === props.match.params.id
     )
+
     let recipesDetail = props.recipes.find(
         recipe => recipe._id === authorsDetail.recipes[0]
       )

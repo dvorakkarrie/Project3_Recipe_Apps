@@ -46,6 +46,17 @@ class App extends Component {
     })
   }
 
+  deleteAuthorsAxios = event => {
+    event.preventDefault()
+    axios({
+      method: "DELETE",
+      url: `${backendAuthorUrl}${event.target.id}`
+    })
+    .then(deletedAuthor => {
+      this.getAuthorsAxios();
+    });
+  }
+  
   getAuthorEmailAxios() {
     axios({
     method: 'GET',
