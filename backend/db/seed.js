@@ -40,6 +40,7 @@ User.deleteMany({}).then(() => {
                     recipeName: "Beef Tacos",
                     url: "https://www.marthastewart.com/338579/beef-tacos",
                     image: "https://www.edamam.com/web-img/c6b/c6b586dc7e72d4599d0d9624736ea4a4.jpg", 
+                    instructions:"<li>4 skinless, boneless, chicken breasts (about 1 1/2 pounds)</li><li>All-purpose flour, for dredging</li>",
                     ingredients: ingredient2._id,
                     creator: karrie.id,
                 })
@@ -57,6 +58,7 @@ User.deleteMany({}).then(() => {
                     recipeName: "Chicken Marsala",
                     url: "https://www.aol.com/?err=404&err_url=https%3a%2f%2fwww.aol.com%2ffood%2frecipe%2fchicken-marsala%2f",
                     image: "https://www.edamam.com/web-img/bb3/bb33506829b7e91e0a5a382b915ad865.jpg",
+                    instructions:"<li>4 skinless, boneless, chicken breasts (about 1 1/2 pounds)</li><li>All-purpose flour, for dredging</li>",
                     ingredients: ingredient1._id,
                     creator: kiran.id
                 }).then(kp => {
@@ -67,6 +69,7 @@ User.deleteMany({}).then(() => {
                     recipeName: "Lemon Chicken",
                     url: "https://www.rachaelray.com/recipes/lemon-chicken-fricassee-with-biscuit-topping/",
                     image: "https://www.edamam.com/web-img/9b2/9b2b1dbcfc6a79559e411c70ee6682bc.jpg",
+                    instructions:"<li>4 skinless, boneless, chicken breasts (about 1 1/2 pounds)</li><li>All-purpose flour, for dredging</li>",
                     ingredients: ingredient2._id,
                     creator: kiran.id
                 }).then(kp => {

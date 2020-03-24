@@ -5,6 +5,7 @@ const RecipeSchema = mongoose.Schema({
  recipeName: String,
  url: String,
  image: String,
+ instructions: String,
  creator:  {
     ref: "User",
     type: mongoose.Schema.Types.ObjectId
