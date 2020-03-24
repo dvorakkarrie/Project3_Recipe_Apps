@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const NewRecipe = (props) => {
+    console.log(props)
     return (
         <div className="new-page">
             <header>

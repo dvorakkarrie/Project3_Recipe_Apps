@@ -21,13 +21,12 @@ class App extends Component {
         newAuthorName: '',
         newAuthorEmail: '', 
         recipes: [],
+        recipeID: '',
         newRecipeName: "",
         newRecipeExternalUrl: "",
         newRecipeImageUrl: "",
         // ingredients: [],
-        // newIngredientName: "",
-        // newIngredientQuantity: 0,
-        // newIngredientMeasurement: '',
+        // newIngredientDescription: "",
         searchAuthorText: '',
         searchRecipeText: '',
         selectedSearch: "authors"
@@ -51,6 +50,17 @@ class App extends Component {
     .catch(error => {
       console.log(error)
     })
+  }
+
+  handleSubmitNewAuthor = event => {
+    console.log("Submitted new author")
+    event.preventDefault()
+    this.createAuthorAxios()
+    this.setState({
+      newAuthorName: '',
+      newAuthorEmail: ''
+    })
+    this.props.history.push("/")
   }
 
   getAuthorsAxios() {
@@ -176,7 +186,6 @@ class App extends Component {
   }
 
   handleChangeNewAuthorName = event => {
-    console.log(event)
     this.setState({
       newAuthorName: event.target.value
     })
@@ -185,7 +194,7 @@ class App extends Component {
   handleChangeNewAuthorEmail = event => {
     console.log(event)
     this.setState({
-      newAuthorEmail: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -200,15 +209,6 @@ class App extends Component {
     this.getAuthorEmailAxios()
     this.setState({
       searchAuthorText: ''
-    })
-  }
-
-  handleSubmitNewAuthor = event => {
-    event.preventDefault()
-    this.createAuthorAxios()
-    this.setState({
-      newAuthorName: '',
-      newAuthorEmail: ''
     })
   }
 
@@ -250,10 +250,11 @@ class App extends Component {
   }
 
   refreshPage = () => {
-    window.location.reload(false)
+    window.location.reload()
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <Switch>
@@ -291,12 +292,15 @@ class App extends Component {
           <Route path="/new-author" render={routerProps => (
             <NewAuthor
             {...routerProps}
+            recipes={this.state.recipes}
             newAuthorName={this.state.newAuthorName}
             newAuthorEmail={this.state.newAuthorEmail}
-            newAuthorRecipeId={this.state.newAuthorRecipeId}
+            recipeID={this.state.recipeID}
             handleChangeNewAuthorName={this.handleChangeNewAuthorName}
             handleChangeNewAuthorEmail={this.handleChangeNewAuthorEmail}
             handleSubmitNewAuthor={this.handleSubmitNewAuthor}
+
+            handleAllRecipeSearch={this.handleAllRecipeSearch}
             /> )}
           />
           <Route path="/recipes/:id" render={routerProps => (
