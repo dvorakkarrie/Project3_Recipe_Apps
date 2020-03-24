@@ -8,15 +8,11 @@ router.get('/', (req, res) => {
     User.find().then(users => res.json(users))
   })	
 
-<<<<<<< HEAD
 // GET USER BY ID	
 router.get('/byId/:id', (req, res) => {
     User.find({_id: req.params.id})
     .then(users => res.json(users))
 })
-=======
-
->>>>>>> kp_Recipe_App
 
 
 // GET USER BY EMAIL	
