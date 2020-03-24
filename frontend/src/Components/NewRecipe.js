@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const NewRecipe = (props) => {
     return (
-        <div>
+        <div className="new-page">
             <header>
                 <h1>Recipe Cookbook</h1>
                 <Link to="/">
@@ -14,8 +14,42 @@ const NewRecipe = (props) => {
                     </p>
                 </Link>
             </header>
-            <section>New Recipe page
-            </section>        
+            <section>
+                <h2>New Recipe Form</h2>
+                <div>
+                    <form className="new-form" onSubmit={props.handleSubmitNewRecipe}>
+                        <div className='new-div'>
+                            <label>Recipe Name:</label>
+                            <input 
+                                type='text' className='search-box' 
+                                onChange={props.handleChangeNewRecipeName} 
+                                value={props.newRecipeName}>
+                                    {props.value}
+                            </input>
+                        </div>
+                        {/* <div className='new-div'>
+                            <label>Recipe Creator:</label>
+                            <input 
+                                type='text' className='search-box' 
+                                placeholder="@gmail.com"
+                                onChange={props.handleChangeNewAuthorEmail} 
+                                value={props.newAuthorEmail}>
+                                    {props.value}
+                            </input>
+                        </div>
+                        <div className='new-div'>
+                            <label>Choose a recipe (if available):</label>
+                            <select id="">
+                                <option value=""></option>
+                            </select>
+                        </div> */}
+                        <button type="button" onClick={props.handleSubmitNewAuthor}>
+                            Submit
+                        </button>
+                        <input type="submit" style={{display: 'none'}}></input>
+                    </form>
+                </div>
+            </section>           
         </div>
     )
 }

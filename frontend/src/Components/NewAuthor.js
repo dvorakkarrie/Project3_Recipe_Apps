@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const NewAuthor = props => {
     return (
-        <div className='new-author-page'>
+        <div className='new-page'>
             <header>
                 <h1>Recipe Cookbook</h1>
                 <Link to="/">
