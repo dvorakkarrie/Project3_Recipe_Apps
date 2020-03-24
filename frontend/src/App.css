@@ -41,7 +41,7 @@ select {
   background-image: url("https://www.edamam.com/web-img/014/0142fbc6cc6f51a03d504aff71df07eb.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
-  background-color: rgba(246, 220, 198, 0.15);
+  background-color: rgb(194, 202, 215);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: 1000px;
   font-size: 15px;
@@ -63,7 +63,7 @@ select {
 .home-main-section {
   align-items: auto;
   display: flex;
-  height: 700px;
+  height: 100%;
   flex-direction: row;
   font-size: 15px;
   font-weight: 600;
@@ -72,7 +72,6 @@ select {
 
 /* This formats the author section of the home page and found in the Home component. */
 .home-author-section {
-  border-right: 2px rgba(21, 21, 21, 0.5) solid;
   padding: 5%;
   text-align: left;
   width: 45%;
@@ -116,7 +115,7 @@ select {
 }
 
 .new-page {
-  height: 1200px;
+  height: 1000px;
 }
 
 .new-form {
@@ -144,9 +143,6 @@ select {
   }
 }
 
+@media screen and (max-width: 600px) {
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }

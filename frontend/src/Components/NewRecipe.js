@@ -19,6 +19,14 @@ const NewRecipe = (props) => {
                 <div>
                     <form className="new-form" onSubmit={props.handleSubmitNewRecipe}>
                         <div className='new-div'>
+                            <label>Creator's Name:</label>
+                            <input 
+                                type='text' className='search-box' 
+                                onChange={props.handleChangeNewCreatorName} 
+                                value={props.newCreatorName}>
+                                    {props.value}
+                            </input>
+                        </div><div className='new-div'>
                             <label>Recipe Name:</label>
                             <input 
                                 type='text' className='search-box' 
@@ -27,23 +35,31 @@ const NewRecipe = (props) => {
                                     {props.value}
                             </input>
                         </div>
-                        {/* <div className='new-div'>
-                            <label>Recipe Creator:</label>
+                        <div className='new-div'>
+                            <label>Recipe External Url:</label>
                             <input 
                                 type='text' className='search-box' 
-                                placeholder="@gmail.com"
-                                onChange={props.handleChangeNewAuthorEmail} 
-                                value={props.newAuthorEmail}>
+                                onChange={props.handleChangeNewRecipeUrl} 
+                                value={props.newRecipeUrl}>
                                     {props.value}
                             </input>
                         </div>
                         <div className='new-div'>
-                            <label>Choose a recipe (if available):</label>
+                            <label>Recipe Image Url:</label>
+                            <input 
+                                type='text' className='search-box' 
+                                onChange={props.handleChangeNewRecipeImage} 
+                                value={props.newRecipeImage}>
+                                    {props.value}
+                            </input>
+                        </div>
+                        <div className='new-div'>
+                            <label>Choose an ingredient (if available):</label>
                             <select id="">
                                 <option value=""></option>
                             </select>
-                        </div> */}
-                        <button type="button" onClick={props.handleSubmitNewAuthor}>
+                        </div>
+                        <button type="button" onClick={props.handleSubmitNewRecipe}>
                             Submit
                         </button>
                         <input type="submit" style={{display: 'none'}}></input>

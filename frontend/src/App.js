@@ -20,9 +20,9 @@ class App extends Component {
         newAuthorName: '',
         newAuthorEmail: '', 
         recipes: [],
-        // newRecipeName: "",
-        // newRecipeUrl: "",
-        // newRecipeImageUrl: "",
+        newRecipeName: "",
+        newRecipeExternalUrl: "",
+        newRecipeImageUrl: "",
         // ingredients: [],
         // newIngredientName: "",
         // newIngredientQuantity: 0,
@@ -47,15 +47,19 @@ class App extends Component {
       authors: [...prevState.authors, newAuthor.data]
       }))
     })
+    .catch(error => {
+      console.log(error)
+    })
   }
 
   getAuthorsAxios() {
     axios({
     method: 'GET',
     url: backendAuthorUrl
-  }).then(authors => 
-    this.setState({authors: authors.data})
-    ).catch(error => {
+    })
+    .then(authors => 
+      this.setState({authors: authors.data}))
+    .catch(error => {
       console.log(error)
     })
   }
@@ -64,44 +68,64 @@ class App extends Component {
     axios({
     method: 'GET',
     url: `${backendAuthorUrl}/byEmail/${this.state.searchAuthorText}`
-  }).then(authors =>
-    this.setState({authors: authors.data})
-    ).catch(error => {
+    })
+    .then(authors =>
+      this.setState({authors: authors.data}))
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  createRecipeAxios() {
+    axios({
+      method: 'POST',
+      url: `${backendRecipeUrl}`,
+      data: {
+        recipeName: this.state.newRecipeName,
+        url: this.state.newRecipeExternalUrl,
+        image: this.state.newRecipeImageUrl
+      }
+    })
+    .then(newRecipe => {
+      this.setState(prevState => ({
+      recipes: [...prevState.recipes, newRecipe.data]
+      }))
+    })
+    .catch(error => {
       console.log(error)
     })
   }
 
   getRecipesAxios() {
     axios({
-    method: 'GET',
-    url: backendRecipeUrl
-  }).then(recipes => {
-    console.log(recipes)
-    this.setState({recipes: recipes.data})}
-    ).catch(error => {
+      method: 'GET',
+      url: backendRecipeUrl
+    })
+    .then(recipes => {
+      this.setState({recipes: recipes.data})})
+    .catch(error => {
       console.log(error)
     })
   }
 
   getRecipeNameAxios() {
     axios({
-    method: 'GET',
-    url: `${backendRecipeUrl}/byRecipeName/${this.state.searchRecipeText}`
-  }).then(recipes => {
-    console.log(recipes)
-    this.setState({recipes: recipes.data})}
-    ).catch(error => {
+      method: 'GET',
+      url: `${backendRecipeUrl}/byRecipeName/${this.state.searchRecipeText}`})
+    .then(recipes => {
+      this.setState({recipes: recipes.data})})
+    .catch(error => {
       console.log(error)
     })
   }
 
   getRecipebyIdAxios() {
     axios({
-    method: 'GET',
-    url: `${backendRecipeUrl}/byId/${this.state.searchRecipeText}`
-  }).then(recipes =>
-    this.setState({recipes: recipes.data})
-    ).catch(error => {
+      method: 'GET',
+      url: `${backendRecipeUrl}/byId/${this.state.searchRecipeText}`})
+    .then(recipes =>
+      this.setState({recipes: recipes.data}))
+    .catch(error => {
       console.log(error)
     })
   }
@@ -113,8 +137,11 @@ class App extends Component {
       url: `${backendRecipeUrl}${event.target.id}`
     })
     .then(deletedRecipe => {
-      this.getRecipesAxios();
-    });
+      this.getRecipesAxios()
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 
   handleChangeAuthor = event => {
@@ -183,6 +210,17 @@ class App extends Component {
   handleRecipeIdSearch = event => {
     event.preventDefault()
     this.getRecipebyIdAxios()
+  }
+
+  handleSubmitNewRecipe = event => {
+    event.preventDefault()
+    this.createRecipeAxios()
+    this.setState({
+      newCreatorName: '',
+      newRecipeName: '',
+      newRecipeExternalImage: '',
+      newRecipeImageUrl: ''
+    })
   }
 
   refreshPage = () => {

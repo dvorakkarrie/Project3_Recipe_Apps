@@ -39,7 +39,7 @@ const NewAuthor = props => {
                         </div>
                         <div className='new-div'>
                             <label>Choose a recipe (if available):</label>
-                            <select id="">
+                            <select id="selectRecipe">
                                 <option value=""></option>
                             </select>
                         </div>
