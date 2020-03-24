@@ -14,7 +14,10 @@ const AuthorDetails = props => {
         recipe => recipe._id === authorsDetail.recipes[0]
       )
 
+
+
       console.log(props.recipes)
+      console.log(props.ingre)
       console.log(authorsDetail)
       console.log(recipesDetail)
     // console.log(authorsDetail.recipes)
@@ -41,7 +44,13 @@ const AuthorDetails = props => {
                 <h2>Author: {authorsDetail.name}</h2>
                 <h2>Email: {authorsDetail.email}</h2>
                 <h2>List of Recipies</h2>
-                <h2><a target='_blank' href={recipesDetail.url} rel="noopener noreferrer">{recipesDetail.recipeName}</a></h2>
+                <h2><Link to={`/recipes/${recipesDetail._id}`}>{recipesDetail.recipeName}</Link></h2>
+                {/* <button 
+                    className="delete-button" 
+                    id={props.match.params.id} 
+                    onClick={props.handleAuthorDelete}>
+                        Delete
+                </button> */}
             </section>        
         </div>
     )

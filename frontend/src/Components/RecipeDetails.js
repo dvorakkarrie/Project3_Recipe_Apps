@@ -1,8 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Parser from 'html-react-parser';
 
 const RecipeDetails = props => {
     console.log(props)
+  
+     
 
     let recipesDetail = props.recipes.find(
         recipe => recipe._id === props.match.params.id
@@ -12,6 +15,7 @@ const RecipeDetails = props => {
         ingredient => ingredient._id ===recipesDetail.ingredients[0]
       )
 
+  console.log(ingredientsDetail)
     return (
         <div>
             <header>
@@ -29,13 +33,14 @@ const RecipeDetails = props => {
                 <img src={recipesDetail.image} alt="Smiley face" height="200" width="200"></img>
                 <h2><a target='_blank' href={recipesDetail.url} rel="noopener noreferrer">Recipe External Link</a></h2>
                 <h2>List of Ingredients</h2>
+                <li>{Parser(recipesDetail.instructions)}</li>
                 <li>{ingredientsDetail.quantity}-{ingredientsDetail.measurement}-{ingredientsDetail.description}</li>
-                <button 
+                {/* <button 
                     className="delete-button" 
-                    id={props.recipes._id} 
+                    id={props.match.params.id} 
                     onClick={props.handleRecipeDelete}>
                         Delete
-                    </button>
+                    </button> */}
             </section>            
         </div>
     )

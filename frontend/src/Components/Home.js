@@ -12,6 +12,7 @@ const Home = (props) => {
                 author = {author}
                 selectedSearch="author"
                 handleAllRecipeSearch={props.handleAllRecipeSearch}
+                handleAuthorDelete ={props.handleAuthorDelete}
             />
         )
     })
