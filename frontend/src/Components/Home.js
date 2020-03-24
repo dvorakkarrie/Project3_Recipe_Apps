@@ -10,6 +10,7 @@ const Home = (props) => {
             <Author 
                 key={author._id}
                 author = {author}
+                selectedSearch="author"
             />
         )
     })
@@ -54,7 +55,7 @@ const Home = (props) => {
                             <input 
                                 type='text' className='search-box' 
                                 placeholder="@gmail.com"
-                                onChange={props.handleChangeAuthorSearch} 
+                                onChange={props.handleChangeAuthor} 
                                 value={props.searchAuthorText}>
                                     {props.value}
                             </input>
@@ -86,7 +87,7 @@ const Home = (props) => {
                             <label>Search by the name of a recipe:</label>
                             <input type='text' className='search-box' 
                                 placeholder="i.e. Beef Tacos, Chicken Marsala"
-                                onChange={props.handleChangeRecipeSearch} 
+                                onChange={props.handleChangeRecipe} 
                                 value={props.searchRecipeText}>{props.value}
                             </input>
                             <button type="button" onClick={props.handleSubmitRecipeSearch}>

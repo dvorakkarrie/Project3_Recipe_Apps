@@ -17,9 +17,8 @@ class App extends Component {
     super(props)
       this.state = {
         authors: [],
-        // newAuthorFirstName: "",
-        // newAuthorLastName: "",
-        // newAuthorEmail: '', 
+        newAuthorName: '',
+        newAuthorEmail: '', 
         recipes: [],
         // newRecipeName: "",
         // newRecipeUrl: "",
@@ -32,6 +31,22 @@ class App extends Component {
         searchRecipeText: '',
         selectedSearch: "authors"
     }
+  }
+
+  createAuthorAxios() {
+    axios({
+    method: 'POST',
+    url: `${backendAuthorUrl}`,
+    data: {
+      name: this.state.newAuthorName,
+      email: this.state.newAuthorEmail,
+      recipes: this.state.recipes
+    }})
+    .then(newAuthor => {
+      this.setState(prevState => ({
+      authors: [...prevState.authors, newAuthor.data]
+      }))
+    })
   }
 
   getAuthorsAxios() {
@@ -55,17 +70,6 @@ class App extends Component {
       console.log(error)
     })
   }
-
-  // getAuthorbyIdAxios() {
-  //   axios({
-  //   method: 'GET',
-  //   url: `${backendAuthorUrl}/byId/${this.state.searchAuthorText}`
-  // }).then(authors =>
-  //   this.setState({authors: authors.data})
-  //   ).catch(error => {
-  //     console.log(error)
-  //   })
-  // }
 
   getRecipesAxios() {
     axios({
@@ -91,6 +95,17 @@ class App extends Component {
     })
   }
 
+  getRecipebyIdAxios() {
+    axios({
+    method: 'GET',
+    url: `${backendRecipeUrl}/byId/${this.state.searchRecipeText}`
+  }).then(recipes =>
+    this.setState({recipes: recipes.data})
+    ).catch(error => {
+      console.log(error)
+    })
+  }
+
   deleteRecipeAxios = event => {
     event.preventDefault()
     axios({
@@ -102,10 +117,24 @@ class App extends Component {
     });
   }
 
-  handleChangeAuthorSearch = event => {
+  handleChangeAuthor = event => {
     console.log(event)
     this.setState({
       searchAuthorText: event.target.value
+    })
+  }
+
+  handleChangeNewAuthorName = event => {
+    console.log(event)
+    this.setState({
+      newAuthorName: event.target.value
+    })
+  }
+
+  handleChangeNewAuthorEmail = event => {
+    console.log(event)
+    this.setState({
+      newAuthorEmail: event.target.value
     })
   }
 
@@ -122,7 +151,16 @@ class App extends Component {
     })
   }
 
-  handleChangeRecipeSearch = event => {
+  handleSubmitNewAuthor = event => {
+    event.preventDefault()
+    this.createAuthorAxios()
+    this.setState({
+      newAuthorName: '',
+      newAuthorEmail: ''
+    })
+  }
+
+  handleChangeRecipe = event => {
     console.log(event.target.value)
     this.setState({
       searchRecipeText: event.target.value
@@ -140,6 +178,11 @@ class App extends Component {
     this.setState({
       searchRecipeText: ''
     })
+  }
+  
+  handleRecipeIdSearch = event => {
+    event.preventDefault()
+    this.getRecipebyIdAxios()
   }
 
   refreshPage = () => {
@@ -159,13 +202,15 @@ class App extends Component {
 
               searchAuthorText={this.state.searchAuthorText}
               handleAllAuthorSearch={this.handleAllAuthorSearch}
-              handleChangeAuthorSearch={this.handleChangeAuthorSearch} 
+              handleChangeAuthor={this.handleChangeAuthor} 
               handleSubmitAuthorSearch={this.handleSubmitAuthorSearch}
 
               searchRecipeText={this.state.searchRecipeText}
               handleAllRecipeSearch={this.handleAllRecipeSearch}
-              handleChangeRecipeSearch={this.handleChangeRecipeSearch} 
+              handleChangeRecipe={this.handleChangeRecipe} 
               handleSubmitRecipeSearch={this.handleSubmitRecipeSearch}
+              handleRecipeIdSearch={this.handleRecipeIdSearch}
+
               refreshPage={this.refreshPage}
             /> )} 
           />
@@ -173,13 +218,22 @@ class App extends Component {
             <AuthorDetails
             {...routerProps}
             authors={this.state.authors}
+            newAuthorEmail={this.state.newAuthorEmail}
+            newAuthorName={this.state.newAuthorName}
             authorDetails={this.props.match.params.id}
+            searchRecipeText={this.state.searchRecipeText}
+            handleRecipeIdSearch={this.handleRecipeIdSearch}
           /> )} 
           />
           <Route path="/new-author" render={routerProps => (
             <NewAuthor
             {...routerProps}
-            authors={this.state.authors}
+            newAuthorName={this.state.newAuthorName}
+            newAuthorEmail={this.state.newAuthorEmail}
+            newAuthorRecipeId={this.state.newAuthorRecipeId}
+            handleChangeNewAuthorName={this.handleChangeNewAuthorName}
+            handleChangeNewAuthorEmail={this.handleChangeNewAuthorEmail}
+            handleSubmitNewAuthor={this.handleSubmitNewAuthor}
             /> )}
           />
           <Route path="/recipes/:id" render={routerProps => (

@@ -6,10 +6,13 @@ button {
   font-size: 15px;
   font-weight: 600;
   height: 25px;
-  margin: 5%;
+  margin: 3%;
   width: 25%;
 }
 
+h2 {
+  margin: 5% auto;
+}
 /* This format the header of the web page and used in the Home component. */
 header {  
 
@@ -19,6 +22,20 @@ header {
   padding: 1%;
 }
 
+input {
+  font-size: 15px;
+}
+
+/* This formats the labels used throughout the application. */
+label {
+  font-weight: 600;
+  text-align: left;
+}
+
+select {
+  height: 30px;
+}
+
 /* This formats the body of the web page and used in the App component. */
 .App {
   background-image: url("https://www.edamam.com/web-img/014/0142fbc6cc6f51a03d504aff71df07eb.jpg");
@@ -26,6 +43,7 @@ header {
   background-repeat: no-repeat;
   background-color: rgba(246, 220, 198, 0.15);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 1000px;
   font-size: 15px;
   margin: auto;
   opacity: 100%;
@@ -57,12 +75,14 @@ header {
   border-right: 2px rgba(21, 21, 21, 0.5) solid;
   padding: 5%;
   text-align: left;
+  width: 45%;
 }
 
 /* This formats the recipe section of the home page and found in the Home component. */
 .home-recipe-section {
   padding: 5%;
   text-align: left;
+  width: 45%;
 }
 
 /* This formats all the divs on the home page and found in the Home component. */
@@ -77,11 +97,12 @@ header {
 .search-box {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
+  float: left;
   height: 25px;
-  margin: 5px 0 30px;
+  margin: 2%;
   position: relative;
   transition: 0.3 all;
-  width: 80%;
+  width: 85%;
 }
 
 /* This formats the search text box when hovered and found in the Home component. */
@@ -91,8 +112,27 @@ header {
 }
 
 .search-results {
-  
-  margin: 20px 0;
+  margin: 20% 0;
+}
+
+.new-author-page {
+  height: 1200px;
+}
+
+.new-form {
+  background-color: rgb(194, 202, 215);
+  margin: 0 25% 25%;
+}
+
+.new-div {
+  background-color: rgb(194, 202, 215);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5% auto;
+  padding: 3% 0;
+  width: 60%;
 }
 
 @keyframes App-logo-spin {

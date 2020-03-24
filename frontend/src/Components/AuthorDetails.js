@@ -3,19 +3,12 @@ import {Link} from 'react-router-dom'
 
 const AuthorDetails = props => {
     console.log(props)
+    console.log(props.authors)
     console.log(props.match.params.id)
 
-    let authorsDetail = props.authors.find(
-        author => author._id === props.match.params.id
-    )
-
-    // console.log(authorsDetail.recipes)
-    // authorsDetail.recipes.forEach(recipe => {
-    //     // let recipeComponent = 
-
-    //     // );
-    //     console.log(recipe)
-    // })
+    // let authorsDetail = props.authors.find(author => 
+    //     author._id === props.match.params.id
+    // )
     
     return (
         <div>
@@ -30,8 +23,8 @@ const AuthorDetails = props => {
                 </Link>
             </header>
             <section>
-                <h2>Author: {authorsDetail.name}</h2>
-                <p>{authorsDetail.recipes}</p>
+                {/* <h2>Author: {authorsDetail.name}</h2>
+                <p>{authorsDetail.recipes}</p> */}
 
             </section>        
         </div>
