@@ -7,13 +7,9 @@ const Author = props => {
     return (
         <div>
             <Link to={`/authors/${props.author._id}`} key={props.author._id}>
-<<<<<<< HEAD
-                <ul>
-=======
             <ul className='author-list' 
                 // onClick={props.handleAllRecipeSearch}
                 >
->>>>>>> fe9ffdbec19edfcbb0d7f228402ac0e4c14ac661
                     <li>
                         {props.author.name}
                     </li>
