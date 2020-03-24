@@ -75,7 +75,7 @@ class App extends Component {
     })
   }
 
-  deleteAuthorsAxios = event => {
+  deleteAuthorAxios = event => {
     event.preventDefault()
     axios({
       method: "DELETE",
@@ -83,6 +83,7 @@ class App extends Component {
     })
     .then(deletedAuthor => {
       this.getAuthorsAxios();
+      this.refreshPage();
     });
   }
   
@@ -269,7 +270,7 @@ class App extends Component {
               handleAllAuthorSearch={this.handleAllAuthorSearch}
               handleChangeAuthor={this.handleChangeAuthor} 
               handleSubmitAuthorSearch={this.handleSubmitAuthorSearch}
-
+              handleAuthorDelete={this.deleteAuthorAxios}
               searchRecipeText={this.state.searchRecipeText}
               handleAllRecipeSearch={this.handleAllRecipeSearch}
               handleChangeRecipe={this.handleChangeRecipe} 
@@ -284,9 +285,11 @@ class App extends Component {
             {...routerProps}
             authors={this.state.authors}
             recipes={this.state.recipes}
+            ingredients={this.state.ingredients}
             authorDetails={this.props.match.params.id}
             searchRecipeText={this.state.searchRecipeText}
             handleRecipeIdSearch={this.handleRecipeIdSearch}
+           
           /> )} 
           />
           <Route path="/new-author" render={routerProps => (
