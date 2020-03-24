@@ -11,6 +11,7 @@ import NewRecipe from './Components/NewRecipe'; // importing NewRecipe component
 
 const backendAuthorUrl = "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
 const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/users backend url
+const backendIngredientsUrl = "http://localhost:8080/api/ingredients/";
 
 class App extends Component {
   constructor(props) {
@@ -64,6 +65,17 @@ class App extends Component {
     })
   }
 
+  deleteAuthorsAxios = event => {
+    event.preventDefault()
+    axios({
+      method: "DELETE",
+      url: `${backendAuthorUrl}${event.target.id}`
+    })
+    .then(deletedAuthor => {
+      this.getAuthorsAxios();
+    });
+  }
+  
   getAuthorEmailAxios() {
     axios({
     method: 'GET',
@@ -104,6 +116,18 @@ class App extends Component {
     .then(recipes => {
       this.setState({recipes: recipes.data})})
     .catch(error => {
+      console.log(error)
+    })
+  }
+
+  getIngredientsAxios() {
+    axios({
+    method: 'GET',
+    url: backendIngredientsUrl
+  }).then(ingredients => {
+    console.log(ingredients)
+    this.setState({ingredients: ingredients.data})}
+    ).catch(error => {
       console.log(error)
     })
   }
@@ -168,6 +192,7 @@ class App extends Component {
   handleAllAuthorSearch = event => {
     event.preventDefault()
     this.getAuthorsAxios()
+    this.getRecipesAxios()
   }
 
   handleSubmitAuthorSearch = event => {
@@ -197,6 +222,7 @@ class App extends Component {
   handleAllRecipeSearch = event => {
     event.preventDefault()
     this.getRecipesAxios()
+    this.getIngredientsAxios() 
   }
 
   handleSubmitRecipeSearch = event => {
@@ -256,8 +282,12 @@ class App extends Component {
             <AuthorDetails
             {...routerProps}
             authors={this.state.authors}
+<<<<<<< HEAD
             newAuthorEmail={this.state.newAuthorEmail}
             newAuthorName={this.state.newAuthorName}
+=======
+            recipes={this.state.recipes}
+>>>>>>> af0c2d7f2d5bb202cb04b6d8c2648e97d51a231f
             authorDetails={this.props.match.params.id}
             searchRecipeText={this.state.searchRecipeText}
             handleRecipeIdSearch={this.handleRecipeIdSearch}
@@ -278,6 +308,7 @@ class App extends Component {
             <RecipeDetails
               {...routerProps}
               recipes={this.state.recipes}
+              ingredients={this.state.ingredients}
               recipeDetails={this.props.match.params.id}
               handleRecipeDelete={this.deleteRecipeAxios}
           /> )}
