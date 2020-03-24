@@ -26,6 +26,18 @@ router.post('/', (req, res) => {
     .then(recipes => res.json(recipes))
 })
 
+// CREATE A RECIPE's INGREDIENT
+router.post('/:id/new-ingredient/', (req, res) => {
+    console.log(req.params)
+    Recipe.findById(req.params.id)
+    .then(recipe => {
+        let newIngredient = req.body;
+        recipe.ingredient.push(newIngredient);
+        recipe.save();
+        res.json(recipe);
+    })
+})
+
 // UPDATE A RECIPE	
 router.put('/:id', (req, res) => {
     Recipe.findOneAndUpdate({ _id: req.params.id }, 

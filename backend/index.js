@@ -3,11 +3,14 @@ const app = express();
 const usersController = require('./controllers/users');
 const recipesController = require('./controllers/recipes')
 const ingredientsController = require('./controllers/ingredients')
+const parser = require('body-parser');
 const cors = require('cors')
 
 // Middleware
 app.use(cors())
-app.use(express.json());
+// app.use(express.json());
+app.use(parser.urlencoded({extended: true}));
+app.use(parser.json());
 
 // Controllers
 app.use('/api/users', usersController);
