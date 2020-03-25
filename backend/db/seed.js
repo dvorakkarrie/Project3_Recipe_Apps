@@ -96,7 +96,7 @@ User.deleteMany({}).then(() => {
                     creator: kiran.id
                 }).then(kp => {
                  kiran.recipes.push(kp);
-                //    kiran.save();
+                   kiran.save();
                     console.log('KP added recipe') })
                 })
            })
