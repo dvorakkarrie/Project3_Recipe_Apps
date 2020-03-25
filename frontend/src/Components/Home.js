@@ -4,13 +4,15 @@ import Author from './Author'
 import Recipe from './Recipe'
 
 const Home = (props) => {
+    console.log(props)
+    
     
     let allAuthors = props.authors.map(author => {
         return (
             <Author 
                 key={author._id}
                 author = {author}
-                selectedSearch="author"
+                name="author"
                 handleAllRecipeSearch={props.handleAllRecipeSearch}
                 handleAuthorDelete ={props.handleAuthorDelete}
             />
@@ -21,8 +23,8 @@ const Home = (props) => {
         return (
             <Recipe 
                 key={recipe._id}
+                name="recipe"
                 recipe = {recipe}
-                selectedSearch = "recipe"
                 handleRecipeDelete={props.handleRecipeDelete}
             />
         )
@@ -30,75 +32,57 @@ const Home = (props) => {
 
     return (
         <div>
-            <header>
-                <h1>Recipe Cookbook</h1>
-                <Link to="/">
-                    <p 
-                        className="home-page-link" 
-                        onClick={props.refreshPage}>
-                            Home
-                    </p>
-                </Link>
-            </header>
             <section className='home-main-section'>
-                <section className="home-author-section">
+                <section className="home-author-section">Search by Author
                     <Link to="/">
                         <div className='home-divs' onClick={props.handleAllAuthorSearch}>
-                            All Authors
+                            Search for All Authors
                         </div>
                     </Link>
                     <Link to="/new-author">
                         <div className='home-divs'>
-                            Create new author
+                            Create a New Author
                         </div>
                     </Link>
                     <div className='home-divs'>
+                        <label>Search by an email address:</label>
                         <form onSubmit={props.handleSubmitAuthorSearch}>
-                            <label>Search by an email address:</label>
                             <input 
-                                type='text' className='search-box' 
+                                type='text' className='input-box' 
+                                name="authorText"
                                 placeholder="@gmail.com"
-                                onChange={props.handleChangeAuthor} 
-                                value={props.searchAuthorText}>
-                                    {props.value}
-                            </input>
-                            <button 
-                                type="button" onClick={props.handleSubmitAuthorSearch}>
-                                    Search
-                            </button>
-                            <input type="submit" style={{display: 'none'}}></input>
+                                onChange={props.handleChange} 
+                                value={props.authorText} />
+                            <input className="button" type="submit" value='Search Author'/>
                         </form>
-                        <div className="search-results">
+                        <div>
                             {allAuthors}
                         </div>
                     </div>
 
                 </section>
-                <section className="home-recipe-section">
+                <section className="home-recipe-section">Search by Recipe
                     <Link to="/">
                         <div className='home-divs' onClick={props.handleAllRecipeSearch}>
-                            All Recipes
+                            Search for All Recipes
                         </div>
                     </Link>
                     <Link to="/new-recipe">
                         <div className='home-divs'>
-                            Create new recipe
+                            Create a New Recipe
                         </div>
                     </Link>
                     <div className='home-divs'>
+                        <label>Search by the name of a recipe:</label>
                         <form onSubmit={props.handleSubmitRecipeSearch}>
-                            <label>Search by the name of a recipe:</label>
-                            <input type='text' className='search-box' 
+                            
+                            <input type='text' className='input-box' name="recipeText"
                                 placeholder="i.e. Beef Tacos, Chicken Marsala"
-                                onChange={props.handleChangeRecipe} 
-                                value={props.searchRecipeText}>{props.value}
-                            </input>
-                            <button type="button" onClick={props.handleSubmitRecipeSearch}>
-                                Search
-                            </button>
-                            <input type="submit" style={{display: 'none'}}></input>
+                                onChange={props.handleChange} 
+                                value={props.recipeText} />
+                            <input className="button" type="submit" value='Search Recipe'/>
                         </form>
-                        <div className="search-results">
+                        <div>
                             {allRecipes}
                         </div>
                     </div>

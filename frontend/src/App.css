@@ -1,29 +1,21 @@
-/* This formats the buttons located on the home page and found in the Home component. */
-button {
-  background-color: rgb(152, 0, 0);
-  border-radius: 10px;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  height: 25px;
-  margin: 3%;
-  width: 25%;
+/* This format the sub-header on the create and detail pages and found in the create and detail components */
+h2 {
+  margin: auto;
+  padding: 2%;
 }
 
-h2 {
-  margin: 5% auto;
-}
 /* This format the header of the web page and used in the Home component. */
 header {  
 
   border-bottom: 2px rgba(21, 21, 21, 0.5) solid;
   color: black;
-  font-size: 20px;
+  font-size: 24px;
   padding: 1%;
 }
 
+/* This formats the text search boxes on the home page and new author/recipe pages and found in the home and create components. */
 input {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 /* This formats the labels used throughout the application. */
@@ -32,7 +24,13 @@ label {
   text-align: left;
 }
 
+li {
+  color: black;
+}
+
+/* This formats the dropdown lists used in new author/recipe pages and create components */
 select {
+  font-size: 16px;
   height: 30px;
 }
 
@@ -44,16 +42,33 @@ select {
   background-color: rgb(194, 202, 215);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: 1000px;
-  font-size: 15px;
+  font-size: 16px;
   margin: auto;
   opacity: 100%;
   text-align: center;
 }
 
+/* This formats the buttons located on the home page and found in the Home component. */
+.button {
+  background-color: rgb(152, 0, 0);
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 3% 0;
+  padding: 1%;
+}
+
+/* This formats the search text box when hovered and found in the Home component. */
+.button:hover {
+  background-color: rgba(152,0,0, 0.5);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
 /* This formats the Home link in the header section and found in the Home component. */
 .home-page-link {
   color: black;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   margin: 0 3%;
   text-align: left;
@@ -63,15 +78,16 @@ select {
 .home-main-section {
   align-items: auto;
   display: flex;
-  height: 100%;
+  height: 800px;
   flex-direction: row;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   justify-content: space-evenly;
 }
 
 /* This formats the author section of the home page and found in the Home component. */
 .home-author-section {
+  font-size: 18px;
   padding: 5%;
   text-align: left;
   width: 45%;
@@ -79,6 +95,7 @@ select {
 
 /* This formats the recipe section of the home page and found in the Home component. */
 .home-recipe-section {
+  font-size: 18px;
   padding: 5%;
   text-align: left;
   width: 45%;
@@ -88,39 +105,37 @@ select {
 .home-divs {
   background-color: rgb(194, 202, 215);
   border-radius: 2px;
+  font-size: 16px;
   padding: 5%;
   width: 80%;
 }
 
 /* This formats the search text boxes located on the home page and found in the Home component. */
-.search-box {
+.input-box {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   float: left;
   height: 25px;
-  margin: 2%;
   position: relative;
-  transition: 0.3 all;
   width: 85%;
 }
 
 /* This formats the search text box when hovered and found in the Home component. */
-.search-box:hover {
+.input-box:hover {
   background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
-.search-results {
-  margin: 20% 0;
+.edit-delete-link {
+  color: blue;
+  font-size: 10px;
+  margin: 0 2%;
 }
 
 .new-page {
-  height: 1000px;
-}
-
-.new-form {
   background-color: rgb(194, 202, 215);
-  margin: 0 25% 25%;
+  margin: 5% 25% 25%;
+  padding: 1% 0;
 }
 
 .new-div {
@@ -129,9 +144,26 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 5% auto;
-  padding: 3% 0;
+  margin: auto;
+  padding: 2% 0;
   width: 60%;
+}
+
+.drop-down-list {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+  width: 85%;
+}
+
+.instructions-box {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  float: left;
+  height: auto;
+  overflow: scroll;
+  position: relative;
+  width: 85%;
+  word-wrap: normal;
 }
 
 @keyframes App-logo-spin {
@@ -144,5 +176,35 @@ select {
 }
 
 @media screen and (max-width: 600px) {
-
+  header {
+    font-size: 16px;
+  }
+  input {
+    font-size: 12px;
+  }
+  select {
+    height: 22px;
+  }
+  .App {
+    height: 600px;
+    font-size: 12px;
+  }
+  .button {
+    font-size: 12px;
+  }
+  .home-page-link {
+    font-size: 12px;
+  }
+  .home-main-section {
+    font-size: 12px;
+    height: 500px;
+  }
+  .edit-delete-link {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+  }
+  .new-page {
+    height: 600px;
+  }
 }

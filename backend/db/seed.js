@@ -4,15 +4,18 @@ const User = require('../models/User')
 const Recipe = require('../models/Recipe')
 const Category = require('../models/Category')
 
-
+// let ingredient1 = {}, ingredient2 ={}
 let category1=''
 let category2=''
 let category3=''
+let category4=''
 
 User.deleteMany({}).then(() => {
     console.log('deleted all users')
     Recipe.deleteMany({}).then(() => {
         console.log('deleted all recipes')
+        // Ingredient.deleteMany({}).then(() => {
+        //     console.log('deleted all ingredients')
           Category.deleteMany({}).then(() =>  {
           console.log('deleted all categories')
 
@@ -36,8 +39,22 @@ User.deleteMany({}).then(() => {
                     category3=category
                     console.log("added category3")
                 })
+                Category.create({
+                    type: "Breakfast"
+                }).then(category => {
+                    category4 = category
+                    console.log("added category4")
+                })
 
-
+            // Ingredient.create({
+            //     quantity: 1,
+            //     measurement: "cup",
+            //     description: "beef"
+            // }).then(ingredient => {
+            //     ingredient1 = ingredient
+            //     console.log("added ingredient1")
+            //   //  ingredient.save();
+            // })
             
             User.create({ 
                 "name": "Karrie Dvorak",
@@ -53,7 +70,6 @@ User.deleteMany({}).then(() => {
                 })
                 .then(kd => {
                     karrie.recipes.push(kd);
-                    karrie.save();
                     console.log('Karrie added recipe') })
             })
 
@@ -70,7 +86,6 @@ User.deleteMany({}).then(() => {
                     creator: kiran.id
                 }).then(kp => {
                     kiran.recipes.push(kp);
-                   // kiran.save();
                     console.log('KP added recipe') })
                 Recipe.create({
                     recipeName: "Lemon Chicken",
@@ -87,7 +102,7 @@ User.deleteMany({}).then(() => {
            })
 
 
-
+        // }) 
 
     })
 })
