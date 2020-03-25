@@ -297,6 +297,7 @@ class App extends Component {
 
   refreshPage = () => {
     this.props.history.push("/")
+    window.location.reload(true)
   }
 
   render() {
