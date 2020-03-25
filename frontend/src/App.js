@@ -105,7 +105,7 @@ class App extends Component {
   getAuthorEmailAxios() {
     axios({
     method: 'GET',
-    url: `${backendAuthorUrl}/byEmail/${this.state.searchAuthorText}`
+    url: `${backendAuthorUrl}byEmail/${this.state.searchAuthorText}`
     })
     .then(authors =>
       this.setState({authors: authors.data}))
@@ -161,7 +161,7 @@ class App extends Component {
   getRecipeNameAxios() {
     axios({
       method: 'GET',
-      url: `${backendRecipeUrl}/byRecipeName/${this.state.searchRecipeText}`})
+      url: `${backendRecipeUrl}byRecipeName/${this.state.searchRecipeText}`})
     .then(recipes => {
       this.setState({recipes: recipes.data})})
     .catch(error => {
