@@ -7,13 +7,15 @@ const RecipeSchema = mongoose.Schema({
  image: String,
  instructions: String,
  creator:  {
-        ref: "User",
-        type: mongoose.Schema.Types.ObjectId
-    },
- categories: {
-         ref: "Categories",
+    ref: "User",
+    type: mongoose.Schema.Types.ObjectId
+  },
+ category: 
+     {
+         ref: "Category",
          type: mongoose.Schema.Types.ObjectId
-    }
+     }
+ 
 });
 
 const Recipe = mongoose.model("Recipe", RecipeSchema);

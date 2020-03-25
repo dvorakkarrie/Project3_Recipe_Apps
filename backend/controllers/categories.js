@@ -1,34 +1,41 @@
-// controllers/categories.js
+// controllers/users.js
 const express = require("express")
 const router = express.Router()
 const Category = require('../models/Category')
 
-// GET ALL CATEGORIES
+// GET ALL categories
 router.get('/', (req, res) => {
-    Category.find({})
-    .then(categories => res.json(categories))
+    Category.find().then(categories => res.json(categories))
   })	
 
-// GET CATEGORY BY ID	
-router.get('/:id', (req, res) => {
+// GET categorie BY ID	
+router.get('/byId/:id', (req, res) => {
     Category.find({_id: req.params.id})
     .then(categories => res.json(categories))
 })
 
-// CREATE AN CATEGORY
+
+// GET categories BY name	
+router.get('/byName/:name/', (req, res) => {
+    Category.find({name: req.params.name})
+    .then(categories => res.json(categories))
+})
+
+
+// CREATE A category
 router.post('/', (req, res) => {
     Category.create(req.body)
     .then(categories => res.json(categories))
 })
 
-// UPDATE AN CATEGORY	
+// UPDATE A category	
 router.put('/:id', (req, res) => {
     Category.findOneAndUpdate({ _id: req.params.id }, 
         req.body, { new: true })
-    .then(categories => res.json(categories))
+    .then(categories => res.json(categories))  
 })
 
-// DELETE AN CATEGORY
+// DELETE A category
 router.delete('/:id', (req, res) => {
     Category.findOneAndDelete({_id: req.params.id})
     .then(categories => res.json(categories))
