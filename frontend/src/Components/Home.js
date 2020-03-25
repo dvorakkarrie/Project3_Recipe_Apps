@@ -4,6 +4,7 @@ import Author from './Author'
 import Recipe from './Recipe'
 
 const Home = (props) => {
+    console.log(props)
     
     
     let allAuthors = props.authors.map(author => {
@@ -24,7 +25,6 @@ const Home = (props) => {
                 key={recipe._id}
                 name="recipe"
                 recipe = {recipe}
-                selectedSearch = "recipe"
                 handleRecipeDelete={props.handleRecipeDelete}
             />
         )
