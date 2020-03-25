@@ -10,8 +10,9 @@ import RecipeDetails from './Components/RecipeDetails'; // importing RecipeDetai
 import NewRecipe from './Components/NewRecipe'; // importing NewRecipe component
 
 const backendAuthorUrl = "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
-const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/recipes backend url
-const backendCategoryUrl = "http://localhost:8080/api/categories/";  //defined variable for the api/categories backend url
+const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/users backend url
+const backendIngredientsUrl = "http://localhost:8080/api/ingredients/";
+const backendCategoriesUrl = "http://localhost:8080/api/categories/";
 
 class App extends Component {
   constructor(props) {
@@ -24,14 +25,16 @@ class App extends Component {
         categoryID: '',
         categories: [],
         recipeID: '',
-        recipes: [],
-        newAuthorName: '',
-        newCategory: '',
-        newEmail: '', 
-        newImage: '',
-        newInstructions: '',
-        newRecipeName: '',
-        newUrl: '',
+        newRecipeName: "",
+        newRecipeExternalUrl: "",
+        newRecipeImageUrl: "",
+        categories:[],
+        newCategory:'',
+        // ingredients: [],
+        // newIngredientDescription: "",
+        searchAuthorText: '',
+        searchRecipeText: '',
+        selectedSearch: "authors"
     }
   }
   
@@ -92,6 +95,30 @@ class App extends Component {
     this.props.history.push("/")
   }
 
+  getAuthorsAxios() {
+    axios({
+    method: 'GET',
+    url: backendAuthorUrl
+    })
+    .then(authors => 
+      this.setState({authors: authors.data}))
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  getCategoriesAxios() {
+    axios({
+    method: 'GET',
+    url: backendCategoriesUrl
+    })
+    .then(categories => 
+      this.setState({categories: categories.data}))
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   deleteAuthorAxios = event => {
     event.preventDefault()
     axios({
@@ -104,6 +131,18 @@ class App extends Component {
     });
   }
   
+  getAuthorEmailAxios() {
+    axios({
+    method: 'GET',
+    url: `${backendAuthorUrl}byEmail/${this.state.searchAuthorText}`
+    })
+    .then(authors =>
+      this.setState({authors: authors.data}))
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   createRecipeAxios() {
     axios({
       method: 'POST',
@@ -191,7 +230,7 @@ class App extends Component {
   getRecipeNameAxios() {
     axios({
       method: 'GET',
-      url: `${backendRecipeUrl}/byRecipeName/${this.state.recipeText}`})
+      url: `${backendRecipeUrl}byRecipeName/${this.state.searchRecipeText}`})
     .then(recipes => {
       this.setState({recipes: recipes.data})})
     .catch(error => {
@@ -210,7 +249,36 @@ class App extends Component {
     })
   }
 
-  handleChange = event => {
+  deleteRecipeAxios = event => {
+    event.preventDefault()
+    axios({
+      method: "DELETE",
+      url: `${backendRecipeUrl}${event.target.id}`
+    })
+    .then(deletedRecipe => {
+      this.getRecipesAxios()
+      this.refreshPage();
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  handleChangeAuthor = event => {
+    console.log(event)
+    this.setState({
+      searchAuthorText: event.target.value
+    })
+  }
+
+  handleChangeNewAuthorName = event => {
+    this.setState({
+      newAuthorName: event.target.value
+    })
+  }
+
+  handleChangeNewAuthorEmail = event => {
+    console.log(event)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -219,7 +287,8 @@ class App extends Component {
   handleAllAuthorSearch = event => {
     event.preventDefault()
     this.getAuthorsAxios()
-    this.getRecipesAxios()
+   this.getRecipesAxios()
+   this.getCategoriesAxios() 
   }
 
   handleSubmitAuthorSearch = event => {
@@ -233,13 +302,12 @@ class App extends Component {
   handleAllRecipeSearch = event => {
     event.preventDefault()
     this.getRecipesAxios()
+    this.getIngredientsAxios() 
     this.getCategoriesAxios() 
   }
-
   handleAllCategorySearch = event => {
-    console.log("category search is running")
     event.preventDefault()
-    this.getCategoriesAxios()
+    this.getCategoriesAxios() 
   }
 
   handleSubmitRecipeSearch = event => {
@@ -290,6 +358,8 @@ class App extends Component {
               handleAllRecipeSearch={this.handleAllRecipeSearch}
               handleSubmitRecipeSearch={this.handleSubmitRecipeSearch}
               handleRecipeIdSearch={this.handleRecipeIdSearch}
+              handleRecipeDelete={this.deleteRecipeAxios}
+              handleAllCategorySearch={this.handleAllCategorySearch}
 
               refreshPage={this.refreshPage}
             /> )} 
@@ -313,7 +383,9 @@ class App extends Component {
             newAuthorName={this.state.newAuthorName}
             newEmail={this.state.newEmail}
             recipeID={this.state.recipeID}
-            handleChange={this.handleChange}
+            handleChangeNewAuthorName={this.handleChangeNewAuthorName}
+            handleChangeNewAuthorEmail={this.handleChangeNewAuthorEmail}
+            handleSubmitNewAuthor={this.handleSubmitNewAuthor}
             handleAllRecipeSearch={this.handleAllRecipeSearch}
             handleCreateNewAuthor={this.handleCreateNewAuthor}
             /> )}
@@ -324,8 +396,8 @@ class App extends Component {
               recipes={this.state.recipes}
               categories={this.state.categories}
               ingredients={this.state.ingredients}
+              categories={this.state.categories}
               recipeDetails={this.props.match.params.id}
-              handleRecipeDelete={this.deleteRecipeAxios}
           /> )}
           />
           <Route path="/new-recipe" render={routerProps => (

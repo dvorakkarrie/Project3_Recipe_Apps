@@ -5,23 +5,12 @@ import Parser from 'html-react-parser';
 const RecipeDetails = props => {
     console.log(props)
   
-<<<<<<< HEAD
-
-    let recipesDetail = props.recipes.find(
-        recipe => recipe._id === props.match.params.id
-      )
-    
-      let ingredientsDetail = props.ingredients.find(
-        ingredient => ingredient._id ===recipesDetail.ingredients[0]
-      )
-=======
     let recipesDetail = props.recipes.find(recipe => 
         recipe._id === props.match.params.id
     )
     // let categoriesDetail = props.categories.find(category => 
     //     category._id === recipesDetail.categories
     // )    
->>>>>>> karrie_recipe_app
 
     // console.log(categoriesDetail)
     return (

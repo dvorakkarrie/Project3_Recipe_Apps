@@ -24,6 +24,8 @@ const Home = (props) => {
                 key={recipe._id}
                 name="recipe"
                 recipe = {recipe}
+                selectedSearch = "recipe"
+                handleRecipeDelete={props.handleRecipeDelete}
             />
         )
     })

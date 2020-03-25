@@ -15,9 +15,13 @@ const AuthorDetails = props => {
     //     author => author._id === props.match.params.id
     // )
 
-    // let recipesDetail = props.recipes.find(
-    //     recipe => recipe._id === authorsDetail.recipes
-    //   )
+      console.log(props.recipes)
+     // console.log(props.ingre)
+      console.log(authorsDetail)
+      console.log(recipesDetail)
+    // console.log(authorsDetail.recipes)
+    // authorsDetail.recipes.forEach(recipe => {
+    //     // let recipeComponent = 
 
     return (
         <div>
