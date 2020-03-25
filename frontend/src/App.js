@@ -31,9 +31,7 @@ class App extends Component {
         newRecipeName: '',
         newUrl: "",
         newImage: "",
-        newCategory:'',
-        searchAuthorText: '',
-        searchRecipeText: '',
+        newCategory:''
     }
   }
   
@@ -55,7 +53,7 @@ class App extends Component {
   getRecipeNameAxios() {
     axios({
       method: 'GET',
-      url: `${backendRecipeUrl}byRecipeName/${this.state.searchRecipeText}`})
+      url: `${backendRecipeUrl}byRecipeName/${this.state.recipeText}`})
     .then(recipes => {
       this.setState({recipes: recipes.data})})
     .catch(error => {
@@ -122,13 +120,11 @@ class App extends Component {
   getAuthorEmailAxios() {
     axios({
     method: 'GET',
-    url: `${backendAuthorUrl}byEmail/${this.state.searchAuthorText}`
+    url: `${backendAuthorUrl}/byEmail/${this.state.authorText}`
     })
     .then(authors =>
       this.setState({authors: authors.data}))
-    .catch(error => {
-      console.log(error)
-    })
+ 
   }
 
   createRecipeAxios() {
@@ -202,20 +198,6 @@ class App extends Component {
       this.getCategoriesAxios()
     })
   }
-  
-  // getAuthorEmailAxios() {
-  //   axios({
-  //   method: 'GET',
-  //   url: `${backendAuthorUrl}/byEmail/${this.state.authorText}`
-  //   })
-  //   .then(authors =>
-  //     this.setState({authors: authors.data}))
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
-  // }
-
-
  
   getRecipebyIdAxios() {
     axios({
