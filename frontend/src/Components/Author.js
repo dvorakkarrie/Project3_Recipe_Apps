@@ -10,10 +10,6 @@ const Author = props => {
                 <li className='search-results'>
                     {props.author.name}
                     <span className='edit-delete-link' id={props.author._id} 
-                        onClick={props}>
-                            Edit
-                    </span>
-                    <span className='edit-delete-link' id={props.author._id} 
                         onClick={props.handleAuthorDelete}>
                             Delete
                     </span>

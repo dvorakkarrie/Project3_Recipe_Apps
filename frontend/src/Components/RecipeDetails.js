@@ -39,46 +39,6 @@ const RecipeDetails = props => {
                         {categoriesDetail.type}
                     </div>
                 </div>          
-
-                <div>
-                    <label className="detail-label">
-                        List of Ingredients:
-                    </label>
-                    <div className='detail-list'>
-                        <ul>
-                            <li>{Parser(recipesDetail.instructions)}</li>
-                        </ul>
-                    </div>
-                </div>  
-                <div className='detail-link'>
-                    <a target='_blank' href={recipesDetail.url} rel="noopener noreferrer">Link to Directions:</a>
-                </div>  
-            </section>
-            <section className="detail-display-section">
-                <div className="detail-img">
-                    <img src={recipesDetail.image} 
-                        alt="Smiley face" 
-                        height="200" 
-                        width="200">
-                    </img>
-                </div>
-                <div className='detail-div'>
-                    <label className="detail-label">
-                        Recipe Name:
-                    </label>
-                    <div className='detail-field'>
-                    {recipesDetail.recipeName}
-                    </div>
-                </div>
-                <div className='detail-div'>
-                    <label className="detail-label">
-                        Category:
-                    </label>
-                    <div className='detail-field'>
-                        {categoriesDetail.type}
-                    </div>
-                </div>          
-
                 <div>
                     <label className="detail-label">
                         List of Ingredients:

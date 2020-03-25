@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom'
 import Author from './Author'
 import Recipe from './Recipe'
 
-const Home = (props) => {
-    console.log(props)
-    
+const Home = (props) => {    
     
     let allAuthors = props.authors.map(author => {
         return (
@@ -32,12 +30,12 @@ const Home = (props) => {
 
     return (
         <div className='home-main-div'>
-                <section className="home-section">Search by Author
-                    <Link to="/">
+                <section className="home-section">Author
+                    {/* <Link to="/">
                         <div className='home-div' onClick={props.handleAllAuthorSearch}>
                             Search for All Authors
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link to="/new-author">
                         <div className='home-div'>
                             Create a New Author
@@ -60,12 +58,12 @@ const Home = (props) => {
                     </div>
 
                 </section>
-                <section className="home-section">Search by Recipe
-                    <Link to="/">
+                <section className="home-section">Recipe
+                    {/* <Link to="/">
                         <div className='home-div' onClick={props.handleAllRecipeSearch}>
                             Search for All Recipes
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link to="/new-recipe">
                         <div className='home-div'>
                             Create a New Recipe

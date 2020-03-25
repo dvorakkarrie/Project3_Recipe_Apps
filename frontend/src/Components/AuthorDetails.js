@@ -45,36 +45,35 @@ const AuthorDetails = props => {
                 </div>    
             </section>
             <section className="detail-edit-section">
-                <div className='detail-div'>
-                    <label className="detail-label">
-                        Author:
-                    </label>
-                    <div className='detail-field'>
-                        {authorsDetail.name}
+                <div className='detail-header'>
+                    Edit Author Form:
+                    <form id={authorsDetail._id} 
+                        onChange={props.handleChange} 
+                        onSubmit={props.handleUpdateAuthor}>
+                    <div className='detail-div'>
+                        <label className="detail-label">
+                            Author:
+                        </label>
+                        <input
+                            type="text" className='input-box'
+                            name="updatedAuthorName"
+                            value={props.updatedAuthorName} />
                     </div>
+                    <div className='detail-div'>
+                        <label className="detail-label">
+                            Email:
+                        </label>
+                        <input 
+                            type='text' className='input-box' 
+                            name="updatedEmail"
+                            placeholder="@gmail.com"
+                       
+                            value={props.updatedEmail} />
+                    </div>  
+                    <input className="button" type="submit" 
+                        value='Update Author'/>         
+                    </form>
                 </div>
-                <div className='detail-div'>
-                    <label className="detail-label">
-                        Email:
-                    </label>
-                    <div className='detail-field'>
-                        {authorsDetail.email}
-                    </div>
-                </div>          
-                <div className='detail-div'>
-                    <label className="detail-label">
-                        List of Recipies:
-                    </label>
-                    <div className='detail-list'>
-                        <ul>
-                            <li>
-                                <Link to={`/recipes/${recipesDetail._id}`}>
-                                    {recipesDetail.recipeName}
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>    
             </section>
        </div>
     )

@@ -222,12 +222,21 @@ select {
 
 .detail-link {
   text-align: center;
+  padding: 3%;
 }
 
 .detail-list {
   border-radius: 2px;
   font-size: 16px;
   font-weight: 400;
+  padding: 15px;
+}
+
+.detail-header {
+  border-bottom: 2px rgba(21, 21, 21, 0.5) solid;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: 800;
   padding: 15px;
 }
 
