@@ -1,18 +1,8 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import React from 'react'
 
-class NewAuthor extends Component {
-    constructor(props) {
-        super(props) 
-        this.state = {
-            recipeID: ''
-        }
-    }
+const NewAuthor = props => {
 
-    render() {
-        console.log(this)
-        let allRecipes = this.props.recipes.map(recipe => {
-            console.log(recipe)
+        let allRecipes = props.recipes.map(recipe => {
             return (   
                 <option key={recipe._id} value={recipe._id}>
                     {recipe.recipeName}
@@ -22,51 +12,42 @@ class NewAuthor extends Component {
         
         return (
             <div className='new-page'>
-                <header>
-                    <h1>Recipe Cookbook</h1>
-                    <Link to="/">
-                        <p 
-                            className="home-page-link" 
-                            onClick={this.props.refreshPage}>
-                                Home
-                        </p>
-                    </Link>
-                </header>
                 <section>
                     <h2>New Author Form</h2>
                     <div>
-                        <form className="new-form" 
-                            onSubmit={this.props.handleSubmitNewAuthor}>
+                        <form onSubmit={props.handleCreateNewAuthor}>
                             <div className='new-div'>
                                 <label>Name (First and Last Name):</label>
-                                <input 
-                                    type='text' className='search-box' 
-                                    onChange={this.props.handleChangeNewAuthorName} 
-                                    value={this.newAuthorName} />
+                                <input className='input-box'
+                                    type='text' name="newAuthorName"
+                                    onChange={props.handleChange} 
+                                    value={props.newAuthorName} />
                             </div>
                             <div className='new-div'>
                                 <label>Email Address:</label>
                                 <input 
-                                    type='text' className='search-box' name="newAuthorEmail"
+                                    type='text' className='input-box' 
+                                    name="newEmail"
                                     placeholder="@gmail.com"
-                                    onChange={this.props.handleChangeNewAuthorEmail} 
-                                    value={this.props.newAuthorEmail} />
+                                    onChange={props.handleChange} 
+                                    value={props.newEmail} />
                             </div>
                             <div className='new-div'>
                                 <label>Choose a recipe (if available):</label>
-                                <select id="selectRecipe" name="recipeID"
-                                    onChange={this.props.handleChangeNewAuthorEmail}
-                                    onClick={this.props.handleAllRecipeSearch}>                           
-                                    {allRecipes}
+                                <select className="drop-down-list" 
+                                    id="selectRecipe" name="recipeID"
+                                    onChange={props.handleChange}
+                                    onClick={props.handleAllRecipeSearch}>                           
+                                        {allRecipes}
                                 </select>
                             </div>
-                            <input type="submit" value='Create New Author'/>
+                            <input className="button" type="submit" 
+                                value='Create New Author'/>
                         </form>
                     </div>
                 </section>        
             </div>
-        )
-    }    
+        )  
 }
 
 export default NewAuthor

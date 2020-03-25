@@ -4,13 +4,20 @@ import {Link} from 'react-router-dom'
 const Recipe = props => {
     return (
         <div>
-            <ul>
-                <li>
-                    <Link to={`/recipes/${props.recipe._id}`}>
-                        {props.recipe.recipeName}
-                    </Link>
-                </li>
-            </ul>
+            <Link to={`/recipes/${props.recipe._id}`} key={props.recipe._id}>
+                <ul>
+                    <li>{props.recipe.recipeName}
+                        <span className='edit-delete-link' id={props.recipe._id} 
+                            onClick={props}>
+                                Edit
+                        </span>
+                        <span className='edit-delete-link' id={props.recipe._id} 
+                            onClick={props.handleRecipeDelete}>
+                                Delete
+                        </span>
+                    </li>
+                </ul>        
+            </Link>
         </div>
     )
 }

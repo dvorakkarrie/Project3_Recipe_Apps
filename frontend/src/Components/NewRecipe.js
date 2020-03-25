@@ -1,69 +1,77 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 
 const NewRecipe = (props) => {
     console.log(props)
+
+    let allAuthors = props.authors.map(author => {
+        return (   
+            <option key={author._id} value={author._id}>
+                {author.name}
+            </option>
+        )
+    })
+    let allCategories = props.categories.map(category => {
+        console.log(category)
+        return (   
+            <option key={category._id} value={category._id}>
+                {category.description}
+            </option>
+        )
+    })
     return (
         <div className="new-page">
-            <header>
-                <h1>Recipe Cookbook</h1>
-                <Link to="/">
-                    <p 
-                        className="home-page-link" 
-                        onClick={props.refreshPage}>
-                            Home
-                    </p>
-                </Link>
-            </header>
             <section>
                 <h2>New Recipe Form</h2>
                 <div>
-                    <form className="new-form" onSubmit={props.handleSubmitNewRecipe}>
+                    <form onSubmit={props.handleCreateNewRecipe}>
                         <div className='new-div'>
-                            <label>Creator's Name:</label>
-                            <input 
-                                type='text' className='search-box' 
-                                onChange={props.handleChangeNewCreatorName} 
-                                value={props.newCreatorName}>
-                                    {props.value}
-                            </input>
-                        </div><div className='new-div'>
                             <label>Recipe Name:</label>
-                            <input 
-                                type='text' className='search-box' 
-                                onChange={props.handleChangeNewRecipeName} 
-                                value={props.newRecipeName}>
-                                    {props.value}
-                            </input>
+                            <input className='input-box' 
+                                type='text' name="newRecipeName"
+                                onChange={props.handleChange} 
+                                value={props.newRecipeName} />
                         </div>
                         <div className='new-div'>
-                            <label>Recipe External Url:</label>
-                            <input 
-                                type='text' className='search-box' 
-                                onChange={props.handleChangeNewRecipeUrl} 
-                                value={props.newRecipeUrl}>
-                                    {props.value}
-                            </input>
+                            <label>Image Url:</label>
+                            <input className='input-box' 
+                                type='text' name="newImage"
+                                onChange={props.handleChange} 
+                                value={props.newImage} />
                         </div>
                         <div className='new-div'>
-                            <label>Recipe Image Url:</label>
-                            <input 
-                                type='text' className='search-box' 
-                                onChange={props.handleChangeNewRecipeImage} 
-                                value={props.newRecipeImage}>
-                                    {props.value}
-                            </input>
+                            <label>External Url:</label>
+                            <input className='input-box' 
+                                type='text' name="newUrl" 
+                                onChange={props.handleChange} 
+                                value={props.newUrl} />
                         </div>
                         <div className='new-div'>
-                            <label>Choose an ingredient (if available):</label>
-                            <select id="">
-                                <option value=""></option>
+                            <label>Select creator's name:</label>
+                            <select className="drop-down-list" 
+                                id="selectedCreator" name="authorID"
+                                onChange={props.handleChange}
+                                onClick={props.handleAllAuthorSearch}>
+                                    {allAuthors}
                             </select>
                         </div>
-                        <button type="button" onClick={props.handleSubmitNewRecipe}>
-                            Submit
-                        </button>
-                        <input type="submit" style={{display: 'none'}}></input>
+                        <div className='new-div'>
+                            <label>Select category:</label>
+                            <select className="drop-down-list" 
+                                id="selectedCreator" name="categoryID"
+                                onChange={props.handleChange}
+                                onClick={props.handleAllCategorySearch}>
+                                    {allCategories}
+                            </select>
+                        </div>
+                        <div className='new-div'>
+                            <label>Instructions:</label>
+                            <input className='instructions-box' 
+                                type='text' name="newInstructions"
+                                onChange={props.handleChange} 
+                                value={props.newInstructions} />
+                        </div>
+                        <input className="button" type="submit" 
+                            value='Create New Recipe'></input>
                     </form>
                 </div>
             </section>           

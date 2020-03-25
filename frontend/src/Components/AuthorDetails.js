@@ -4,53 +4,32 @@ import {Link} from 'react-router-dom'
 const AuthorDetails = props => {
     console.log(props)
     console.log(props.authors)
-    console.log(props.match.params.id)
+    console.log(props.recipes)
 
-    let authorsDetail = props.authors.find(
-        author => author._id === props.match.params.id
-    )
+    let authorDetail = props.authors.filter(author => 
+        author._id === props.match.params.id)
+    let recipeDetail = props.recipes.filter(recipe => 
+        recipe._id === authorDetail.recipes)
 
-    let recipesDetail = props.recipes.find(
-        recipe => recipe._id === authorsDetail.recipes[0]
-      )
+    // let authorsDetail = props.authors.find(
+    //     author => author._id === props.match.params.id
+    // )
 
+    // let recipesDetail = props.recipes.find(
+    //     recipe => recipe._id === authorsDetail.recipes
+    //   )
 
-
-      console.log(props.recipes)
-      console.log(props.ingre)
-      console.log(authorsDetail)
-      console.log(recipesDetail)
-    // console.log(authorsDetail.recipes)
-    // authorsDetail.recipes.forEach(recipe => {
-    //     // let recipeComponent = 
-
-    //     // );
-    //     console.log(recipe)
-    // })
-    
     return (
         <div>
-            <header>
-                <h1>Recipe Cookbook</h1>
-                <Link to="/">
-                    <p 
-                        className="home-page-link" 
-                        onClick={props.refreshPage}>
-                            Home
-                    </p>
-                </Link>
-            </header>
             <section>
-                <h2>Author: {authorsDetail.name}</h2>
-                <h2>Email: {authorsDetail.email}</h2>
+                <h2>Author: {authorDetail.name}</h2>
+                <h2>Email: {authorDetail.email}</h2>
                 <h2>List of Recipies</h2>
-                <h2><Link to={`/recipes/${recipesDetail._id}`}>{recipesDetail.recipeName}</Link></h2>
-                {/* <button 
-                    className="delete-button" 
-                    id={props.match.params.id} 
-                    onClick={props.handleAuthorDelete}>
-                        Delete
-                </button> */}
+                <h2>Recipe:  
+                    <Link to={`/recipes/${recipeDetail._id}`}>
+                    {recipeDetail.recipeName}
+                    </Link>
+                </h2>
             </section>        
         </div>
     )
