@@ -23,6 +23,7 @@ const Home = (props) => {
                 key={recipe._id}
                 recipe = {recipe}
                 selectedSearch = "recipe"
+                handleRecipeDelete={props.handleRecipeDelete}
             />
         )
     })

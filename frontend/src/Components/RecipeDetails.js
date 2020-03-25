@@ -10,11 +10,14 @@ const RecipeDetails = props => {
         recipe => recipe._id === props.match.params.id
       )
     
-      let ingredientsDetail = props.ingredients.find(
-        ingredient => ingredient._id ===recipesDetail.ingredients[0]
-      )
+    //   let ingredientsDetail = props.ingredients.find(
+    //     ingredient => ingredient._id ===recipesDetail.ingredients[0]
+    //   )
 
-  console.log(ingredientsDetail)
+      let categoriesDetail = props.categories.find(
+        category => category._id ===recipesDetail.category
+      )
+  console.log(categoriesDetail)
     return (
         <div>
             <header>
@@ -31,15 +34,9 @@ const RecipeDetails = props => {
                 <h2>{recipesDetail.recipeName}</h2>
                 <img src={recipesDetail.image} alt="Smiley face" height="200" width="200"></img>
                 <h2><a target='_blank' href={recipesDetail.url} rel="noopener noreferrer">Recipe External Link</a></h2>
+                <h2>Category type : {categoriesDetail.type}</h2>
                 <h2>List of Ingredients</h2>
                 <li>{Parser(recipesDetail.instructions)}</li>
-                <li>{ingredientsDetail.quantity}-{ingredientsDetail.measurement}-{ingredientsDetail.description}</li>
-                {/* <button 
-                    className="delete-button" 
-                    id={props.match.params.id} 
-                    onClick={props.handleRecipeDelete}>
-                        Delete
-                    </button> */}
             </section>            
         </div>
     )

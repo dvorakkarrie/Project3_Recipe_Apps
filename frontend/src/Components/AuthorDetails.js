@@ -17,7 +17,7 @@ const AuthorDetails = props => {
 
 
       console.log(props.recipes)
-      console.log(props.ingre)
+     // console.log(props.ingre)
       console.log(authorsDetail)
       console.log(recipesDetail)
     // console.log(authorsDetail.recipes)
