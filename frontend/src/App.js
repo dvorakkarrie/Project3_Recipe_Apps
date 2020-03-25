@@ -25,7 +25,9 @@ class App extends Component {
         categories: [],
         recipes: [],
         recipeID: '',
-        newRecipeName: "",
+        newAuthorName: '',
+        newEmail: '',
+        newRecipeName: '',
         newRecipeExternalUrl: "",
         newRecipeImageUrl: "",
         newCategory:'',
@@ -97,6 +99,8 @@ class App extends Component {
   }
 
   handleCreateNewAuthor = event => {
+    console.log("create new author is running")
+
     event.preventDefault()
     this.createAuthorAxios()
     this.props.history.push("/")
@@ -269,13 +273,7 @@ class App extends Component {
     })
   }
 
-  handleChangeNewAuthorName = event => {
-    this.setState({
-      newAuthorName: event.target.value
-    })
-  }
-
-  handleChangeNewAuthorEmail = event => {
+  handleChange = event => {
     console.log(event)
     this.setState({
       [event.target.name]: event.target.value
@@ -378,8 +376,7 @@ class App extends Component {
             newAuthorName={this.state.newAuthorName}
             newEmail={this.state.newEmail}
             recipeID={this.state.recipeID}
-            handleChangeNewAuthorName={this.handleChangeNewAuthorName}
-            handleChangeNewAuthorEmail={this.handleChangeNewAuthorEmail}
+            handleChange={this.handleChange}
             handleSubmitNewAuthor={this.handleSubmitNewAuthor}
             handleAllRecipeSearch={this.handleAllRecipeSearch}
             handleCreateNewAuthor={this.handleCreateNewAuthor}

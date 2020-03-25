@@ -6,14 +6,18 @@ const Recipe = props => {
         <div>
             <Link to={`/recipes/${props.recipe._id}`} key={props.recipe._id}>         
                 <ul className="recipe-list" >
-                    <li>     
+                    <li className='search-results'>     
                       {props.recipe.recipeName}
-                    </li>
-                    <button 
+                      <span className='edit-delete-link' 
                         id={props.recipe._id} 
+                        onClick={props}>
+                            Edit
+                    </span>
+                    <span className='edit-delete-link' id={props.recipe._id} 
                         onClick={props.handleRecipeDelete}>
                             Delete
-                    </button>
+                    </span>
+                    </li>
                 </ul>
             </Link>
            

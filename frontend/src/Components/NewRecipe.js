@@ -14,7 +14,7 @@ const NewRecipe = (props) => {
         console.log(category)
         return (   
             <option key={category._id} value={category._id}>
-                {category.description}
+                {category.type}
             </option>
         )
     })
