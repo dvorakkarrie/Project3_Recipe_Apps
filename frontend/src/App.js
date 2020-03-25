@@ -27,9 +27,10 @@ class App extends Component {
         recipeID: '',
         newAuthorName: '',
         newEmail: '',
+        newInstructions: '',
         newRecipeName: '',
-        newRecipeExternalUrl: "",
-        newRecipeImageUrl: "",
+        newUrl: "",
+        newImage: "",
         newCategory:'',
         searchAuthorText: '',
         searchRecipeText: '',
@@ -106,30 +107,6 @@ class App extends Component {
     this.props.history.push("/")
   }
 
-  // getAuthorsAxios() {
-  //   axios({
-  //   method: 'GET',
-  //   url: backendAuthorUrl
-  //   })
-  //   .then(authors => 
-  //     this.setState({authors: authors.data}))
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
-  // }
-
-  // getCategoriesAxios() {
-  //   axios({
-  //   method: 'GET',
-  //   url: backendCategoryUrl
-  //   })
-  //   .then(categories => 
-  //     this.setState({categories: categories.data}))
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
-  // }
-
   deleteAuthorAxios = event => {
     event.preventDefault()
     axios({
@@ -199,7 +176,7 @@ class App extends Component {
       method: 'POST',
         url: `${backendCategoryUrl}`,
         data: {
-          description: this.state.description,
+          type: this.state.type,
         }
       })
       .then(newCategory => {
