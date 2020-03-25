@@ -31,20 +31,19 @@ const Home = (props) => {
     })
 
     return (
-        <div>
-            <section className='home-main-section'>
-                <section className="home-author-section">Search by Author
+        <div className='home-main-div'>
+                <section className="home-section">Search by Author
                     <Link to="/">
-                        <div className='home-divs' onClick={props.handleAllAuthorSearch}>
+                        <div className='home-div' onClick={props.handleAllAuthorSearch}>
                             Search for All Authors
                         </div>
                     </Link>
                     <Link to="/new-author">
-                        <div className='home-divs'>
+                        <div className='home-div'>
                             Create a New Author
                         </div>
                     </Link>
-                    <div className='home-divs'>
+                    <div className='home-div'>
                         <label>Search by an email address:</label>
                         <form onSubmit={props.handleSubmitAuthorSearch}>
                             <input 
@@ -61,18 +60,18 @@ const Home = (props) => {
                     </div>
 
                 </section>
-                <section className="home-recipe-section">Search by Recipe
+                <section className="home-section">Search by Recipe
                     <Link to="/">
-                        <div className='home-divs' onClick={props.handleAllRecipeSearch}>
+                        <div className='home-div' onClick={props.handleAllRecipeSearch}>
                             Search for All Recipes
                         </div>
                     </Link>
                     <Link to="/new-recipe">
-                        <div className='home-divs'>
+                        <div className='home-div'>
                             Create a New Recipe
                         </div>
                     </Link>
-                    <div className='home-divs'>
+                    <div className='home-div'>
                         <label>Search by the name of a recipe:</label>
                         <form onSubmit={props.handleSubmitRecipeSearch}>
                             
@@ -87,7 +86,6 @@ const Home = (props) => {
                         </div>
                     </div>
                 </section>
-            </section>
         </div>    
     )
 }
