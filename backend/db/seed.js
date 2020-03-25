@@ -8,6 +8,7 @@ const Category = require('../models/Category')
 let category1=''
 let category2=''
 let category3=''
+let category4=''
 
 User.deleteMany({}).then(() => {
     console.log('deleted all users')
@@ -38,7 +39,12 @@ User.deleteMany({}).then(() => {
                     category3=category
                     console.log("added category3")
                 })
-
+                Category.create({
+                    type: "Breakfast"
+                }).then(category => {
+                    category4 = category
+                    console.log("added category4")
+                })
 
             // Ingredient.create({
             //     quantity: 1,
@@ -49,13 +55,6 @@ User.deleteMany({}).then(() => {
             //     console.log("added ingredient1")
             //   //  ingredient.save();
             // })
-
-            Category.create({
-                description: "breakfast"
-            }).then(category => {
-                breakfast = category
-                console.log("added breakfast")
-            })
             
             User.create({ 
                 "name": "Karrie Dvorak",
@@ -97,7 +96,7 @@ User.deleteMany({}).then(() => {
                     creator: kiran.id
                 }).then(kp => {
                  kiran.recipes.push(kp);
-                   kiran.save();
+                //    kiran.save();
                     console.log('KP added recipe') })
                 })
            })

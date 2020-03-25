@@ -2,10 +2,7 @@ const express = require('express');
 const app = express();
 const usersController = require('./controllers/users');
 const recipesController = require('./controllers/recipes')
-<<<<<<< HEAD
-=======
-const ingredientsController = require('./controllers/ingredients')
->>>>>>> 4c3136a3907984d7366677cddb8da4489ad5d1bd
+// const ingredientsController = require('./controllers/ingredients')
 const categoriesController = require('./controllers/categories')
 const parser = require('body-parser');
 const cors = require('cors')
@@ -19,10 +16,7 @@ app.use(parser.json());
 // Controllers
 app.use('/api/users', usersController);
 app.use('/api/recipes', recipesController)
-<<<<<<< HEAD
-=======
-app.use('/api/ingredients',ingredientsController)
->>>>>>> 4c3136a3907984d7366677cddb8da4489ad5d1bd
+// app.use('/api/ingredients',ingredientsController)
 app.use('/api/categories',categoriesController)
 
 app.listen(8080, () => {
