@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 // Set the uri for connecting to our local mongodb
-const mongoURI = 'mongodb://localhost/recipe_db'
+const mongoURI = 'mongodb://localhost/recipe_cookbooks_db'
 
 // connect to database with imported mongoose instance
 mongoose

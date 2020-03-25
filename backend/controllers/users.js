@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
     .then(users => res.json(users))
 })
 
-// CREATE A USER's RECIPE
+// ADD A USER's RECIPE
 router.post('/new-recipe/:id/', (req, res) => {
     console.log(req.params)
     User.findById(req.params.id)
