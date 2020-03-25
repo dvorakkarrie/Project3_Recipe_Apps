@@ -1,7 +1,6 @@
 const mongoose = require('./connection')
 
 const User = require('../models/User')
-const Category = require('../models/Category')
 const Recipe = require('../models/Recipe')
 const Category = require('../models/Category')
 
