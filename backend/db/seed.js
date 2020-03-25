@@ -4,7 +4,7 @@ const User = require('../models/User')
 const Recipe = require('../models/Recipe')
 const Category = require('../models/Category')
 
-let ingredient1 = {}, ingredient2 ={}
+// let ingredient1 = {}, ingredient2 ={}
 let category1=''
 let category2=''
 let category3=''
@@ -13,8 +13,8 @@ User.deleteMany({}).then(() => {
     console.log('deleted all users')
     Recipe.deleteMany({}).then(() => {
         console.log('deleted all recipes')
-        Ingredient.deleteMany({}).then(() => {
-            console.log('deleted all ingredients')
+        // Ingredient.deleteMany({}).then(() => {
+        //     console.log('deleted all ingredients')
           Category.deleteMany({}).then(() =>  {
           console.log('deleted all categories')
 
@@ -40,15 +40,15 @@ User.deleteMany({}).then(() => {
                 })
 
 
-            Ingredient.create({
-                quantity: 1,
-                measurement: "cup",
-                description: "beef"
-            }).then(ingredient => {
-                ingredient1 = ingredient
-                console.log("added ingredient1")
-              //  ingredient.save();
-            })
+            // Ingredient.create({
+            //     quantity: 1,
+            //     measurement: "cup",
+            //     description: "beef"
+            // }).then(ingredient => {
+            //     ingredient1 = ingredient
+            //     console.log("added ingredient1")
+            //   //  ingredient.save();
+            // })
 
             Category.create({
                 description: "breakfast"
@@ -103,7 +103,7 @@ User.deleteMany({}).then(() => {
            })
 
 
-        }) 
+        // }) 
 
     })
 })
