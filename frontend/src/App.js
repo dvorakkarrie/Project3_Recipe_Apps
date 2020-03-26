@@ -76,7 +76,7 @@ class App extends Component {
         image: this.state.newImage,
         instructions: this.state.newInstructions,
         creator: this.state.authorID,
-        categories: this.state.categoryID
+        category: this.state.categoryID
       }
     })
     .then(newRecipe => {
