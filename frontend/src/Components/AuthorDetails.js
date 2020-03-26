@@ -3,40 +3,79 @@ import {Link} from 'react-router-dom'
 
 const AuthorDetails = props => {
     console.log(props)
-    console.log(props.authors)
-    console.log(props.match.params.id)
 
     let authorsDetail = props.authors.find(
-        author => author._id === props.match.params.id
-    )
+        author => author._id === props.match.params.id )
 
     let recipesDetail = props.recipes.find(
-        recipe => recipe._id === authorsDetail.recipes[0]
-      )
+        recipe => recipe._id === authorsDetail.recipes[0] )
 
-
-
-      console.log(props.recipes)
-     // console.log(props.ingre)
-      console.log(authorsDetail)
-      console.log(recipesDetail)
-    // console.log(authorsDetail.recipes)
-    // authorsDetail.recipes.forEach(recipe => {
-    //     // let recipeComponent = 
-
-    //     // );
-    //     console.log(recipe)
-    // })
-    
     return (
-        <div>
-            <section>
-                <h2>Author: {authorsDetail.name}</h2>
-                <h2>Email: {authorsDetail.email}</h2>
-                <h2>List of Recipies</h2>
-                <h2><Link to={`/recipes/${recipesDetail._id}`}>{recipesDetail.recipeName}</Link></h2>
-            </section>        
-        </div>
+        <div className="detail-main-div">
+            <section className="detail-display-section">
+                <div className='detail-div'>
+                    <label className="detail-label">
+                        Author:
+                    </label>
+                    <div className='detail-field'>
+                        {authorsDetail.name}
+                    </div>
+                </div>
+                <div className='detail-div'>
+                    <label className="detail-label">
+                        Email:
+                    </label>
+                    <div className='detail-field'>
+                        {authorsDetail.email}
+                    </div>
+                </div>          
+                <div className='detail-div'>
+                    <label className="detail-label">
+                        Recipes:
+                    </label>
+                    <div className='detail-list'>
+                        <ul>
+                            <li>
+                                <Link to={`/recipes/${recipesDetail._id}`}>
+                                    {recipesDetail.recipeName}
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>    
+            </section>
+            <section className="detail-edit-section">
+                <div className='detail-header'>
+                    Edit Author Form:
+                    <form id={authorsDetail._id} 
+                        onChange={props.handleChange} 
+                        onSubmit={props.handleUpdateAuthor}>
+                    <div className='detail-div'>
+                        <label className="detail-label">
+                            Author:
+                        </label>
+                        <input
+                            type="text" className='input-box'
+                            name="updatedAuthorName"
+                            value={props.updatedAuthorName} />
+                    </div>
+                    <div className='detail-div'>
+                        <label className="detail-label">
+                            Email:
+                        </label>
+                        <input 
+                            type='text' className='input-box' 
+                            name="updatedEmail"
+                            placeholder="@gmail.com"
+                       
+                            value={props.updatedEmail} />
+                    </div>  
+                    <input className="button" type="submit" 
+                        value='Update Author'/>         
+                    </form>
+                </div>
+            </section>
+       </div>
     )
 }
 

@@ -11,13 +11,13 @@ const NewRecipe = (props) => {
         )
     })
     let allCategories = props.categories.map(category => {
-        console.log(category)
-        return (   
+        return (
             <option key={category._id} value={category._id}>
                 {category.type}
             </option>
         )
     })
+    
     return (
         <div className="new-page">
             <section>
@@ -57,7 +57,7 @@ const NewRecipe = (props) => {
                         <div className='new-div'>
                             <label>Select category:</label>
                             <select className="drop-down-list" 
-                                id="selectedCreator" name="categoryID"
+                                name="categoryID"
                                 onChange={props.handleChange}
                                 onClick={props.handleAllCategorySearch}>
                                     {allCategories}

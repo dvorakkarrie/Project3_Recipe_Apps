@@ -30,7 +30,7 @@ User.deleteMany({}).then(() => {
                 })
 
                 Category.create({
-                    type: "Main course",
+                    type: "Main Course",
                 }).then(category => {
                     category3=category
                     console.log("added category3")

@@ -8,12 +8,7 @@ const Recipe = props => {
                 <ul className="recipe-list" >
                     <li className='search-results'>     
                       {props.recipe.recipeName}
-                      <span className='edit-delete-link' 
-                        id={props.recipe._id} 
-                        onClick={props}>
-                            Edit
-                    </span>
-                    <span className='edit-delete-link' id={props.recipe._id} 
+                    <span className='delete-link' id={props.recipe._id} 
                         onClick={props.handleRecipeDelete}>
                             Delete
                     </span>

@@ -1,11 +1,12 @@
-// controllers/users.js
+// controllers/categories.js
 const express = require("express")
 const router = express.Router()
 const Category = require('../models/Category')
 
 // GET ALL categories
 router.get('/', (req, res) => {
-    Category.find().then(categories => res.json(categories))
+    Category.find({}).then(categories => 
+        res.json(categories))
   })	
 
 // GET categorie BY ID	
