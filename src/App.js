@@ -145,7 +145,7 @@ class App extends Component {
   getAuthorsAxios() {
     axios({
     method: 'GET',
-    url: `${backendUrl}api/users/`
+    url: `https://recipes-backend-app.herokuapp.com/api/users/`
     })
     .then(authors => {
       this.setState({authors: authors.data})})
@@ -163,7 +163,7 @@ class App extends Component {
   getCategoriesAxios() {
     axios({
     method: 'GET',
-    url: `${backendUrl}/api/categories/`
+    url: `https://recipes-backend-app.herokuapp.com/api/categories/`
   }).then(categories => {
     this.setState({categories: categories.data})})
   }
@@ -171,7 +171,7 @@ class App extends Component {
   getRecipesAxios() {
     axios({
       method: 'GET',
-      url: `${backendUrl}api/recipes/`
+      url: `https://recipes-backend-app.herokuapp.com/api/recipes/`
     })
     .then(recipes => {
       this.setState({recipes: recipes.data})})
