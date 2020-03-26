@@ -9,13 +9,9 @@ import NewAuthor from './Components/NewAuthor'; //importing NewAuthor component
 import RecipeDetails from './Components/RecipeDetails'; // importing RecipeDetails component
 import NewRecipe from './Components/NewRecipe'; // importing NewRecipe component
 
-let backendAuthorUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
-let backendRecipeUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/api/recipes/"; // defined variable for the api/recipes backend url
-let backendCategoryUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/api/categories/"; // defined variable for the api/categories backend url
+let backendUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/"; // defined variable for the api/users backend url
+// const backendUrl = "http://localhost:8080/"; // defined variable for the api/users backend url
 
-// const backendAuthorUrl = "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
-// const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/recipes backend url
-// const backendCategoryUrl = "http://localhost:8080/api/categories/";  // defined variable for the api/categories backend url
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +46,7 @@ class App extends Component {
   createAuthorAxios() {
     axios({
     method: 'POST',
-    url: `${backendAuthorUrl}`,
+    url: `${backendUrl}/api/users/`,
     data: {
       name: this.state.newAuthorName,
       email: this.state.newEmail,
@@ -73,7 +69,7 @@ class App extends Component {
   createRecipeAxios() {
     axios({
       method: 'POST',
-      url: `${backendRecipeUrl}`,
+      url: `${backendUrl}/api/recipes/`,
       data: {
         recipeName: this.state.newRecipeName,
         url: this.state.newUrl,
@@ -101,7 +97,7 @@ class App extends Component {
     event.preventDefault()
     axios({
       method: "DELETE",
-      url: `${backendAuthorUrl}${event.target.id}`
+      url: `${backendUrl}/api/users/${event.target.id}`
     })
     .then(deletedAuthor => {
       this.getAuthorsAxios();
@@ -113,7 +109,7 @@ class App extends Component {
     event.preventDefault()
     axios({
       method: "DELETE",
-      url: `${backendRecipeUrl}${event.target.id}`
+      url: `${backendUrl}/api/recipes/${event.target.id}`
     })
     .then(deletedRecipe => {
       this.getRecipesAxios()
@@ -125,7 +121,7 @@ class App extends Component {
     console.log(event.target)
     axios({
       method: "PUT",
-      url: `${backendAuthorUrl}${event.target.id}`,
+      url: `${backendUrl}/api/users/${event.target.id}`,
       data: {
         name: this.state.updatedAuthorName,
         email: this.state.updatedEmail
@@ -150,7 +146,7 @@ class App extends Component {
   getAuthorsAxios() {
     axios({
     method: 'GET',
-    url: backendAuthorUrl
+    url: `${backendUrl}/api/users/`
     })
     .then(authors => {
       this.setState({authors: authors.data})})
@@ -159,7 +155,7 @@ class App extends Component {
   getAuthorEmailAxios() {
     axios({
     method: 'GET',
-    url: `${backendAuthorUrl}/byEmail/${this.state.authorText}`
+    url: `${backendUrl}/api/users/byEmail/${this.state.authorText}`
     })
     .then(authors =>
       this.setState({authors: authors.data}))
@@ -168,7 +164,7 @@ class App extends Component {
   getCategoriesAxios() {
     axios({
     method: 'GET',
-    url: backendCategoryUrl
+    url: `${backendUrl}/api/categories/`
   }).then(categories => {
     this.setState({categories: categories.data})})
   }
@@ -176,7 +172,7 @@ class App extends Component {
   getRecipesAxios() {
     axios({
       method: 'GET',
-      url: backendRecipeUrl
+      url: `${backendUrl}/api/recipes/`
     })
     .then(recipes => {
       this.setState({recipes: recipes.data})})
@@ -185,7 +181,7 @@ class App extends Component {
   getRecipeNameAxios() {
     axios({
       method: 'GET',
-      url: `${backendRecipeUrl}byRecipeName/${this.state.recipeText}`})
+      url: `${backendUrl}/api/recipes/byRecipeName/${this.state.recipeText}`})
     .then(recipes => {
       this.setState({recipes: recipes.data})})
     .catch(error => {
@@ -196,7 +192,7 @@ class App extends Component {
   getRecipebyIdAxios() {
     axios({
       method: 'GET',
-      url: `${backendRecipeUrl}/byId/${this.state.recipeText}`})
+      url: `${backendUrl}/api/recipes/byId/${this.state.recipeText}`})
     .then(recipes =>
       this.setState({recipes: recipes.data}))
     .catch(error => {
