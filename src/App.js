@@ -9,7 +9,7 @@ import NewAuthor from './Components/NewAuthor'; //importing NewAuthor component
 import RecipeDetails from './Components/RecipeDetails'; // importing RecipeDetails component
 import NewRecipe from './Components/NewRecipe'; // importing NewRecipe component
 
-let backendUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/"; // defined variable for the api/users backend url
+let backendUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080"; // defined variable for the api/users backend url
 // const backendUrl = "http://localhost:8080"; // defined variable for the api/users backend url
 
 class App extends Component {
