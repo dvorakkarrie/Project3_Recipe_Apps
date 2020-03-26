@@ -67,7 +67,6 @@ const AuthorDetails = props => {
                             type='text' className='input-box' 
                             name="updatedEmail"
                             placeholder="@gmail.com"
-                       
                             value={props.updatedEmail} />
                     </div>  
                     <input className="button" type="submit" 

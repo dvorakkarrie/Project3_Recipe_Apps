@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 
 const Author = props => {
-    console.log(props)
     return (
         <div>
             <Link to={`/authors/${props.author._id}`} key={props.author._id}>

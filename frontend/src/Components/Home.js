@@ -31,11 +31,6 @@ const Home = (props) => {
     return (
         <div className='home-main-div'>
                 <section className="home-section">Author
-                    {/* <Link to="/">
-                        <div className='home-div' onClick={props.handleAllAuthorSearch}>
-                            Search for All Authors
-                        </div>
-                    </Link> */}
                     <Link to="/new-author">
                         <div className='home-div'>
                             Create a New Author
@@ -59,11 +54,6 @@ const Home = (props) => {
 
                 </section>
                 <section className="home-section">Recipe
-                    {/* <Link to="/">
-                        <div className='home-div' onClick={props.handleAllRecipeSearch}>
-                            Search for All Recipes
-                        </div>
-                    </Link> */}
                     <Link to="/new-recipe">
                         <div className='home-div'>
                             Create a New Recipe

@@ -76,7 +76,7 @@ class App extends Component {
         image: this.state.newImage,
         instructions: this.state.newInstructions,
         creator: this.state.authorID,
-        categories: this.state.categoryID
+        category: this.state.categoryID
       }
     })
     .then(newRecipe => {
@@ -200,6 +200,11 @@ class App extends Component {
     })
   }
 
+  handleRecipeIdSearch = event => {
+    event.preventDefault()
+    this.getRecipebyIdAxios()
+  }
+
   handleChange = event => {
     console.log(event.target)
     this.setState({
@@ -240,11 +245,6 @@ class App extends Component {
     this.setState({
       recipeText: ''
     })
-  }
-  
-  handleRecipeIdSearch = event => {
-    event.preventDefault()
-    this.getRecipebyIdAxios()
   }
 
   refreshPage = () => {
