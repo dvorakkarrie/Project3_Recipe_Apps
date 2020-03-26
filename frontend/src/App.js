@@ -87,6 +87,7 @@ class App extends Component {
   }
 
   handleCreateNewRecipe = event => {
+    console.log(event.target)
     event.preventDefault()
     this.createRecipeAxios()
     this.props.history.push("/")
@@ -117,7 +118,6 @@ class App extends Component {
   }
 
   putAuthorAxios = event => {
-  
     console.log(event.target)
     axios({
       method: "PUT",
@@ -201,10 +201,11 @@ class App extends Component {
   }
 
   handleChange = event => {
-    console.log(event)
+    console.log(event.target)
     this.setState({
       [event.target.name]: event.target.value
     })
+    console.log(this.state.categoryID)
   }
 
   handleAllAuthorSearch = event => {
@@ -230,7 +231,7 @@ class App extends Component {
 
   handleAllCategorySearch = event => {
     event.preventDefault()
-    this.getCategoriesAxios() 
+    this.getCategoriesAxios(event) 
   }
 
   handleSubmitRecipeSearch = event => {
@@ -318,6 +319,7 @@ class App extends Component {
             <RecipeDetails
               {...routerProps}
               recipes={this.state.recipes}
+              categoryID={this.state.categoryID}
               categories={this.state.categories}
               ingredients={this.state.ingredients}
               recipeDetails={this.props.match.params.id}
@@ -326,12 +328,14 @@ class App extends Component {
           <Route path="/new-recipe" render={routerProps => (
             <NewRecipe
             {...routerProps}
+            authorID={this.state.authorID}
             authors={this.state.authors}
             categories={this.state.categories}
             categoryID={this.state.categoryID}
             newRecipeName={this.state.newRecipeName}
             newImage={this.state.newImage}
             newUrl={this.state.newUrl}
+            newCategory={this.state.newCategory}
             newCreator={this.state.newCreator}
             newInstructions={this.state.newInstructions}
             handleChange={this.handleChange}

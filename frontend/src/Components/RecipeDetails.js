@@ -2,12 +2,13 @@ import React from 'react'
 import Parser from 'html-react-parser';
 
 const RecipeDetails = props => {
-    console.log(props)
-  
+    console.log(props.recipes)
+    console.log(props.match.params.id)
+
     let recipesDetail = props.recipes.find(
         recipe => recipe._id === props.match.params.id
       )
-
+        console.log(recipesDetail.category)
     let categoriesDetail = props.categories.find(
         category => category._id ===recipesDetail.category
       )
@@ -19,8 +20,8 @@ const RecipeDetails = props => {
                 <div className="detail-img">
                     <img src={recipesDetail.image} 
                         alt="Smiley face" 
-                        height="200" 
-                        width="200">
+                        height="100%" 
+                        width="100%">
                     </img>
                 </div>
                 <div className='detail-div'>

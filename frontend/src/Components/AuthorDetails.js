@@ -31,7 +31,7 @@ const AuthorDetails = props => {
                 </div>          
                 <div className='detail-div'>
                     <label className="detail-label">
-                        List of Recipies:
+                        Recipes:
                     </label>
                     <div className='detail-list'>
                         <ul>

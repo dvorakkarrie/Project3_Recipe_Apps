@@ -133,7 +133,7 @@ select {
 }
 
 /* This formats the edit and delete links found on the home page and used in Author and Recipe components */
-.edit-delete-link {
+.delete-link {
   color: blue;
   font-size: 10px;
   margin: 0 2%;

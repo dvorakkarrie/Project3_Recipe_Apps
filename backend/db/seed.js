@@ -16,21 +16,21 @@ User.deleteMany({}).then(() => {
           console.log('deleted all categories')
 
                 Category.create({
-                    type: "Apetizer",
+                    type: "Appetizer",
                 }).then(category => {
                     category1=category
                     console.log("added category1")
                 })
 
                 Category.create({
-                    type: "dessert",
+                    type: "Dessert",
                 }).then(category => {
                     category2=category
                     console.log("added category2")
                 })
 
                 Category.create({
-                    type: "Main course",
+                    type: "Main Course",
                 }).then(category => {
                     category3=category
                     console.log("added category3")
