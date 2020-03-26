@@ -1,5 +1,5 @@
 import React from 'react'
-import Parser from 'html-react-parser';
+// import Parser from 'html-react-parser';
 
 const RecipeDetails = props => {
     console.log(props.recipes)
@@ -46,7 +46,7 @@ const RecipeDetails = props => {
                     </label>
                     <div className='detail-list'>
                         <ul>
-                            <li>{Parser(recipesDetail.instructions)}</li>
+                            <li>{recipesDetail.instructions}</li>
                         </ul>
                     </div>
                 </div>  
