@@ -198,6 +198,8 @@ select {
   text-align: left;
   width: 48%;
 }
+
+/* This formats the Author detail section and found in the AuthorDetails component. */
 .detail-edit-section {
   background-color: rgb(240, 237, 212);
   color: rgb(1, 58, 1);
@@ -208,10 +210,13 @@ select {
   text-align: left;
   width: 48%;
 }
+
+/* This formats the Author and Recipe detail divs and found in the AuthorDetails and RecipeDetails components. */
 .detail-div {
   display: flex;
 }
 
+/* This formats the Author and Recipe detail divs and found in the AuthorDetails and RecipeDetails components. */
 .detail-field {
   border-radius: 2px;
   display: flex;
@@ -220,11 +225,13 @@ select {
   padding: 15px;
 }
 
+/* This formats the Recipe detail link and found in the RecipeDetails components. */
 .detail-link {
   text-align: center;
   padding: 3%;
 }
 
+/* This formats the Author and Recipe detail lists and found in the AuthorDetails and RecipeDetails components. */
 .detail-list {
   border-radius: 2px;
   font-size: 16px;

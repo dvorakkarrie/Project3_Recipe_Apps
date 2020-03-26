@@ -9,9 +9,13 @@ import NewAuthor from './Components/NewAuthor'; //importing NewAuthor component
 import RecipeDetails from './Components/RecipeDetails'; // importing RecipeDetails component
 import NewRecipe from './Components/NewRecipe'; // importing NewRecipe component
 
-const backendAuthorUrl = "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
-const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/recipes backend url
-const backendCategoryUrl = "http://localhost:8080/api/categories/";  // defined variable for the api/categories backend url
+let backendAuthorUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
+let backendRecipeUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/api/recipes/"; // defined variable for the api/recipes backend url
+let backendCategoryUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/api/categories/"; // defined variable for the api/categories backend url
+
+// const backendAuthorUrl = "http://localhost:8080/api/users/"; // defined variable for the api/users backend url
+// const backendRecipeUrl = "http://localhost:8080/api/recipes/"; // defined variable for the api/recipes backend url
+// const backendCategoryUrl = "http://localhost:8080/api/categories/";  // defined variable for the api/categories backend url
 
 class App extends Component {
   constructor(props) {
