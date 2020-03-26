@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> karrie_recipe_app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -67,6 +70,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<<<<<<< HEAD
 =======
 # Recipe application
 
@@ -203,3 +207,5 @@ Use this section to include a brief code snippet of functionality that you are p
 - Input field issue used to update Author name and email in PUT Axios call #10:  Added handleChange to the component and fix the PUT axios call to include the event.
 - Category type was undefined when posting a new recipe:  Corrected the category data field in the POST axios call to match the field in the Recipe backend model.
 >>>>>>> 7cb49e6fbc5e1c391df75ae591590decac8f9525
+=======
+>>>>>>> karrie_recipe_app
