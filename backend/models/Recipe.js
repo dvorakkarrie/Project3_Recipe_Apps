@@ -14,7 +14,6 @@ const RecipeSchema = mongoose.Schema({
     ref: "Category",
     type: mongoose.Schema.Types.ObjectId
   }
- 
 });
 
 const Recipe = mongoose.model("Recipe", RecipeSchema);

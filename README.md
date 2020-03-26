@@ -1,30 +1,33 @@
 # Recipe application
 
 ## Description
-This app lets people add, find, update and delete recipes.
+This application allows users to add, find, update and delete authors and add, find and delete their corresponding recipes.
 
 ## Wireframe
 * home page (https://wireframe.cc/RPyDHg)
-* user recipes page (https://wireframe.cc/Tabout)
+* add new author page (https://wireframe.cc/S1ngqA)
+* edit author details page (https://wireframe.cc/u2PdC3)
+* add new recipe page (https://wireframe.cc/GRSxIX)
+* recipes detail page (https://wireframe.cc/Tabout)
 * add new recipe page (https://wireframe.cc/5K2tud)
-* edit recipe page (https://wireframe.cc/u2PdC3)
+
 
 ## MVP
-* Add a recipe
- - assign directions url
- - add iamge url
- - list ingredients
- - assign favorited
-* Search criteria for a recipe name
-* View the recipe details
- - display the recipe name
- - display the external url
- - display the image
- - display the ingredients
- - display if the recipe is a favorite
-* Update recipe details
- - i.e. ingredients, url and image
-* Delete a recipe by id
+### Add a recipe
+ * assign directions url
+ * add iamge url
+ * list ingredients
+ * assign favorited
+### Search criteria for a recipe name
+### View the recipe details
+ * display the recipe name
+ * display the external url
+ * display the image
+ * display the ingredients
+ * display if the recipe is a favorite
+### Update recipe details
+ * i.e. ingredients, url and image
+ * Delete a recipe by id
 
 ## User Stories
 * as a user, I can add my name and email address to the database
