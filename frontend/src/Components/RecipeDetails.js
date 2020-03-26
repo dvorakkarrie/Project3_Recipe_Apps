@@ -2,8 +2,6 @@ import React from 'react'
 import Parser from 'html-react-parser';
 
 const RecipeDetails = props => {
-    console.log(props.recipes)
-    console.log(props.match.params.id)
 
     let recipesDetail = props.recipes.find(
         recipe => recipe._id === props.match.params.id
