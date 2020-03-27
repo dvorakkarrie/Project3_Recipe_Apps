@@ -2,6 +2,7 @@ import React from 'react'
 import Parser from 'html-react-parser';
 
 const RecipeDetails = props => {
+    console.log(props)
 
     let recipesDetail = props.recipes.find(
         recipe => recipe._id === props.match.params.id
@@ -44,7 +45,7 @@ const RecipeDetails = props => {
                     </label>
                     <div className='detail-list'>
                         <ul>
-                            <li>{Parser(recipesDetail.instructions)}</li>
+                            {Parser(recipesDetail.instructions)}
                         </ul>
                     </div>
                 </div>  
