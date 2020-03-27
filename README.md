@@ -4,7 +4,7 @@
 This application allows users to add, find, update and delete authors and add, find and delete their corresponding recipes.
  
 ## Project Links
-- Backend: github repo](https://github.com/kpendurthi/Recipes_backend_app)
+- Backend: [github repo](https://github.com/kpendurthi/Recipes_backend_app)
 - Frontend: [github repo](https://github.com/dvorakkarrie/Project3_Recipe_Apps)
 - [deployment]()
  
