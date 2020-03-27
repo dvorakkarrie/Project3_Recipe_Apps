@@ -4,9 +4,9 @@
 This application allows users to add, find, update and delete authors and add, find and delete their corresponding recipes.
  
 ## Project Links
-- Backend: [github repo](https://github.com/kpendurthi/Recipes_backend_app)
-- Frontend: [github repo](https://github.com/dvorakkarrie/Project3_Recipe_Apps)
-- [deployment]()
+- GitHub Backend: [github repo](https://github.com/kpendurthi/Recipes_backend_app)
+- GitHub Frontend: [github repo](https://github.com/dvorakkarrie/Project3_Recipe_Apps)
+- Heroku Frontend:[deployment](https://git.heroku.com/recipe-frontend-app.git)
  
 ## Wireframes
 Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe.
